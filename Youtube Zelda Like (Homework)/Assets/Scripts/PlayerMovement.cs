@@ -10,13 +10,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Cached References")]
 
     // Private Chached References
-    private Rigidbody2D myRigedBody; // cashed reference
+    private Rigidbody2D myRigedbody; // cached Rigidbody2D reference
     private Vector2 changeInVelocity;
+    private Animator myAnimator; // chached Animator Reference
 
     // Start is called before the first frame update
     void Start()
     {
-        myRigedBody = GetComponent<Rigidbody2D>();
+        myRigedbody = GetComponent<Rigidbody2D>(); // Set myRigidbody to the object's Rigidbody component
+        myAnimator = GetComponent<Animator>(); // Set myAnimator to the object's Animator component
     }
 
     // Update is called once per frame
@@ -31,9 +33,16 @@ public class PlayerMovement : MonoBehaviour
         changeInVelocity.x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
         changeInVelocity.y = Input.GetAxisRaw("Vertical") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
 
-        if (changeInVelocity != Vector2.zero) // If the Player has movement input
+        if (changeInVelocity != Vector2.zero) // If the Player has movement input; vital for the player to remain facing the direction of the last input
         {
-            transform.Translate(new Vector2(changeInVelocity.x, changeInVelocity.y));
+            transform.Translate(new Vector2(changeInVelocity.x, changeInVelocity.y)); // move the Player relative to the input
+            myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
+            myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
+            myAnimator.SetBool("isWalking", true);
+        }
+        else
+        {
+            myAnimator.SetBool("isWalking", false);
         }
         /*
          * Alternate Movecharacter Algorithm
@@ -41,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             changeInVelocity.x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed
             changeInVelocity.y = Input.GetAxisRaw("Vertical") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed
             
-            myRigedBody.velocity = changeInVelocity; //Set the velocity of the Player to the change in velocity
+            myRigedbody.velocity = changeInVelocity; //Set the velocity of the Player to the change in velocity
         */
     }
 }
