@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         changeInVelocity = Vector2.zero;
-        changeInVelocity.x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
-        changeInVelocity.y = Input.GetAxisRaw("Vertical") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
+        changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed * Time.deltaTime; // (1, 0 or -1) * walkspeed * seconds from the last frame
+        changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed * Time.deltaTime; // (1, 0 or -1) * walkspeed * seconds from the last frame
 
         if (changeInVelocity != Vector2.zero) // If the Player has movement input; vital for the player to remain facing the direction of the last input
         {
@@ -44,13 +44,11 @@ public class PlayerMovement : MonoBehaviour
         {
             myAnimator.SetBool("isWalking", false);
         }
-        /*
-         * Alternate Movecharacter Algorithm
-            changeInVelocity = Vector2.zero; //Set the player's movement to 0 every frame
-            changeInVelocity.x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed
-            changeInVelocity.y = Input.GetAxisRaw("Vertical") * Time.deltaTime * walkSpeed; // (1, 0 or -1) * walkspeed
-            
-            myRigedbody.velocity = changeInVelocity; //Set the velocity of the Player to the change in velocity
-        */
+        
+        // Alternate Move Character Algorithm
+        //myRigedbody.velocity = changeInVelocity; //Set the velocity of the Player to the change in velocity
+        //changeInVelocity = Vector2.zero; //Set the player's movement to 0 every frame
+        //changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed; // (1, 0 or -1) * walkspeed
+        //changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed; // (1, 0 or -1) * walkspeed
     }
 }
