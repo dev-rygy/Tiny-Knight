@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
         //changeInVelocity = Vector2.zero;
         changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
         changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
-
         myRigedbody.velocity = changeInVelocity;
+
         bool playerIsMoving = Mathf.Abs(myRigedbody.velocity.x) > Mathf.Epsilon
            || Mathf.Abs(myRigedbody.velocity.y) > Mathf.Epsilon;
         if (playerIsMoving)
