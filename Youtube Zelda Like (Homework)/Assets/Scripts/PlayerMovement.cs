@@ -24,15 +24,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            MoveCharacter(); // Move the character
+        MoveCharacter(); // Move the character
     }
 
     void MoveCharacter()
     {
-        changeInVelocity = Vector2.zero;
-        changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed * Time.deltaTime; // (1, 0 or -1) * walkspeed * seconds from the last frame
-        changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed * Time.deltaTime; // (1, 0 or -1) * walkspeed * seconds from the last frame
+        //changeInVelocity = Vector2.zero;
+        changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
+        changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
 
+        myRigedbody.velocity = changeInVelocity;
+        bool playerIsMoving = Mathf.Abs(myRigedbody.velocity.x) > Mathf.Epsilon
+           || Mathf.Abs(myRigedbody.velocity.y) > Mathf.Epsilon;
+        if (playerIsMoving)
+        {
+            myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
+            myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
+            myAnimator.SetBool("isWalking", true);
+        }
+        else
+        {
+            myAnimator.SetBool("isWalking", false);
+        }
+
+        /*
         if (changeInVelocity != Vector2.zero) // If the Player has movement input; vital for the player to remain facing the direction of the last input
         {
             transform.Translate(new Vector2(changeInVelocity.x, changeInVelocity.y)); // move the Player relative to the input
@@ -44,11 +59,6 @@ public class PlayerMovement : MonoBehaviour
         {
             myAnimator.SetBool("isWalking", false);
         }
-        
-        // Alternate Move Character Algorithm
-        //myRigedbody.velocity = changeInVelocity; //Set the velocity of the Player to the change in velocity
-        //changeInVelocity = Vector2.zero; //Set the player's movement to 0 every frame
-        //changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed; // (1, 0 or -1) * walkspeed
-        //changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed; // (1, 0 or -1) * walkspeed
+        */
     }
 }
