@@ -38965,8 +38965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 472539115}
   dialogText: {fileID: 1687701919}
-  scriptableObj: {fileID: 11400000, guid: 75e7470ab6d083c43bd7a4a9fc411680, type: 2}
-  dialog: Lucky Lake
+  scriptableObj: {fileID: 0}
+  dialog: LUCKY LAKE
   usingScriptableObj: 0
 --- !u!1 &1670410520
 GameObject:
