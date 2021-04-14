@@ -38965,8 +38965,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 472539115}
   dialogText: {fileID: 1687701919}
+  scriptableObj: {fileID: 11400000, guid: 75e7470ab6d083c43bd7a4a9fc411680, type: 2}
   dialog: Lucky Lake
-  dialogActive: 1
+  usingScriptableObj: 0
 --- !u!1 &1670410520
 GameObject:
   m_ObjectHideFlags: 0
@@ -39117,7 +39118,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

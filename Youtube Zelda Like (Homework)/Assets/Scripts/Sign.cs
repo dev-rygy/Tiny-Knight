@@ -5,24 +5,43 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
+    [Header ("Caches")]
     public GameObject dialogueBox;
     public Text dialogText;
+    public Dialogue scriptableObj;
+
+    [Header("Text")]
     public string dialog;
-    public bool playerInRange;
+    public bool usingScriptableObj;
+
+    // private
+    private bool playerInRange;
 
     void Update()
     {
         if(Input.GetButtonDown("Interact") && playerInRange)
         {
-             if(dialogueBox.activeInHierarchy)
+            promptDialogue();
+        }
+    }
+
+    private void promptDialogue()
+    {
+        if (dialogueBox.activeInHierarchy)
+        {
+            dialogueBox.SetActive(false);
+        }
+        else
+        {
+            if(usingScriptableObj)
             {
-                dialogueBox.SetActive(false);
+                dialogText.text = scriptableObj.GetText();
             }
             else
             {
-                dialogueBox.SetActive(true);
                 dialogText.text = dialog;
             }
+            dialogueBox.SetActive(true);
         }
     }
 
