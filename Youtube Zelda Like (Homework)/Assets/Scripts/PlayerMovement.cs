@@ -2,10 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    idle,
+    walk,
+    interact,
+    attack
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Velocity")]
     public float walkSpeed = 5f; // Player walk speed
+
+    [Header("Player State")]
+    public PlayerState currentState;
+
+    [Header("Coroutines")]
+    public float attackDelay = 0.25f;
 
     [Header("Cached References")]
 
@@ -19,12 +33,17 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigedbody = GetComponent<Rigidbody2D>(); // Set myRigidbody to the object's Rigidbody component
         myAnimator = GetComponent<Animator>(); // Set myAnimator to the object's Animator component
+        currentState = PlayerState.idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveCharacter(); // Move the character every frame
+        if (currentState != PlayerState.attack)
+        {
+            MoveCharacter(); // Move the character every frame
+            Attack();
+        }
     }
 
     void MoveCharacter()
@@ -41,24 +60,31 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
             myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
             myAnimator.SetBool("isWalking", true);
+            currentState = PlayerState.walk;
         }
         else
         {
             myAnimator.SetBool("isWalking", false);
+            currentState = PlayerState.idle;
         }
+    }
 
-        /*
-        if (changeInVelocity != Vector2.zero) // If the Player has movement input; vital for the player to remain facing the direction of the last input
+    void Attack()
+    {
+        if(Input.GetButtonDown("Attack"))
         {
-            transform.Translate(new Vector2(changeInVelocity.x, changeInVelocity.y)); // move the Player relative to the input
-            myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
-            myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
-            myAnimator.SetBool("isWalking", true);
+            StartCoroutine(AttackCo());
         }
-        else
-        {
-            myAnimator.SetBool("isWalking", false);
-        }
-        */
+    }
+
+    private IEnumerator AttackCo()
+    {
+        myRigedbody.velocity = Vector2.zero;
+        currentState = PlayerState.attack;
+        myAnimator.SetBool("isAttacking", true);
+        yield return null;
+        myAnimator.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(attackDelay);
+        currentState = PlayerState.idle;
     }
 }
