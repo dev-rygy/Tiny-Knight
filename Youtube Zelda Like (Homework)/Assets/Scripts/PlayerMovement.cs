@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigedbody = GetComponent<Rigidbody2D>(); // Set myRigidbody to the object's Rigidbody component
         myAnimator = GetComponent<Animator>(); // Set myAnimator to the object's Animator component
+        myAnimator.SetFloat("moveX", 0);
+        myAnimator.SetFloat("moveY", -1);
         currentState = PlayerState.idle;
     }
 
@@ -42,13 +44,13 @@ public class PlayerMovement : MonoBehaviour
         if (currentState != PlayerState.attack)
         {
             MoveCharacter(); // Move the character every frame
-            Attack();
+            Attack(); // Attack on button press
         }
     }
 
     void MoveCharacter()
     {
-        //changeInVelocity = Vector2.zero;
+        changeInVelocity.Normalize(); // Makes diagnal speed slightly slower
         changeInVelocity.x = Input.GetAxisRaw("Horizontal") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
         changeInVelocity.y = Input.GetAxisRaw("Vertical") * walkSpeed; // (1, 0 or -1) * walkspeed * seconds from the last frame
         myRigedbody.velocity = changeInVelocity;
@@ -57,8 +59,16 @@ public class PlayerMovement : MonoBehaviour
            || Mathf.Abs(myRigedbody.velocity.y) > Mathf.Epsilon;
         if (playerIsMoving)
         {
-            myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
-            myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
+            if (Mathf.Abs(changeInVelocity.x) > Mathf.Abs(changeInVelocity.y))
+            {
+                myAnimator.SetFloat("moveX", changeInVelocity.x); // change idle animation relative to where the Player is facing
+                myAnimator.SetFloat("moveY", 0);
+            }
+            else
+            {
+                myAnimator.SetFloat("moveX", 0);
+                myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
+            }
             myAnimator.SetBool("isWalking", true);
             currentState = PlayerState.walk;
         }

@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
+  - breakable
   layers:
   - Default
   - TransparentFX
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Underpass2
     uniqueID: 139411291
+    locked: 0
+  - name: Enemy
+    uniqueID: 3916715459
     locked: 0
   - name: Player
     uniqueID: 222492425
