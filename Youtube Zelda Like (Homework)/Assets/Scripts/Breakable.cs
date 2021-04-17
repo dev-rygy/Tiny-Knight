@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pot : MonoBehaviour
+public class Breakable : MonoBehaviour
 {
     [Header("Coroutines")]
-    public float breakDelay = .3f;
+    public float breakDelay = 1f;
 
     // Private caches
     private Animator myAnimator;

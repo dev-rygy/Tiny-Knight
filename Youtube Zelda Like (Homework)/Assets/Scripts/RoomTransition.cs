@@ -34,10 +34,10 @@ public class RoomTransition : MonoBehaviour
 
     private IEnumerator AreaTitleCo() // Coroutine for title card
     {
-        yield return new WaitForSeconds(spawnDelay);
+        yield return new WaitForSeconds(spawnDelay); // wait x amount of seconds for title card to appear
         text.SetActive(true);
         placeText.text = placeName;
-        yield return new WaitForSeconds(lifeTime);
+        yield return new WaitForSeconds(lifeTime); // wait x amount of seconds before title card vanishes
         text.SetActive(false);
     }
 }

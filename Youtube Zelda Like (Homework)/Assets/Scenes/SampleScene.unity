@@ -24487,7 +24487,7 @@ GameObject:
   - component: {fileID: 330643999}
   m_Layer: 0
   m_Name: Right Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24829,7 +24829,7 @@ GameObject:
   - component: {fileID: 664561771}
   m_Layer: 0
   m_Name: Left Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25272,10 +25272,11 @@ GameObject:
   - component: {fileID: 857939328}
   - component: {fileID: 857939332}
   - component: {fileID: 857939331}
+  - component: {fileID: 857939334}
   - component: {fileID: 857939333}
   m_Layer: 0
   m_Name: Log
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25432,6 +25433,32 @@ MonoBehaviour:
   chaseRadius: 4
   attackRadius: 1
   homePosition: {fileID: 0}
+--- !u!61 &857939334
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857939327}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00871706, y: -0.091528654}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9365225, y: 1.3287883}
+  m_EdgeRadius: 0
 --- !u!1 &901439481
 GameObject:
   m_ObjectHideFlags: 0
@@ -25553,7 +25580,7 @@ GameObject:
   - component: {fileID: 996134994}
   m_Layer: 0
   m_Name: Down Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25816,7 +25843,7 @@ GameObject:
   - component: {fileID: 1048681386}
   m_Layer: 0
   m_Name: Up Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25873,6 +25900,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30111d5b21eb6cc46b4dc139c4db4aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1099076374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4233136601329533697, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+  m_PrefabInstance: {fileID: 4233136601194571759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099076380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099076374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 3.5
+  knocktime: 0.2
 --- !u!1 &1122747623
 GameObject:
   m_ObjectHideFlags: 0
@@ -25920,7 +25966,7 @@ GameObject:
   - component: {fileID: 1208364818}
   m_Layer: 0
   m_Name: Pot
-  m_TagString: breakable
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26048,7 +26094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8b66019d98be44f9ba676e07235beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 0.3
+  breakDelay: 1
 --- !u!1 &1277044242
 GameObject:
   m_ObjectHideFlags: 0
@@ -39427,7 +39473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.100006, y: -102.2}
+  m_AnchoredPosition: {x: 3.1000366, y: -102.19998}
   m_SizeDelta: {x: -452.2697, y: 65.1994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561273913
