@@ -22,12 +22,12 @@ public class Knockback : MonoBehaviour
 
     private IEnumerator KnockCo(Rigidbody2D otherRigidbody2D)
     {
-        otherRigidbody2D.isKinematic = false;
+        otherRigidbody2D.GetComponent<Enemy>().currentState = EnemyState.stagger;
         Vector2 difference = otherRigidbody2D.transform.position - transform.position;
         difference = difference.normalized * thrust;
         otherRigidbody2D.AddForce(difference, ForceMode2D.Impulse);
         yield return new WaitForSeconds(knocktime);
         otherRigidbody2D.velocity = Vector2.zero;
-        otherRigidbody2D.isKinematic = true;
+        otherRigidbody2D.GetComponent<Enemy>().currentState = EnemyState.idle;
     }
 }
