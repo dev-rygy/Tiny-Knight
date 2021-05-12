@@ -14,13 +14,16 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy State")]
     public EnemyState currentState;
-    public int health;
+
+    [Header("Enemy Properties")]
     public string enemyName;
+    public int health;
     public int baseAttack;
     public float moveSpeed;
 
-    public void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState) // Change EnemyState
     {
         if (currentState != newState)
         {
@@ -28,12 +31,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void EnemyKnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay)
+    public void EnemyKnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay) // Start KnockCo
     {
         StartCoroutine(KnockCo(myRigidbody2D, knocktime, recoverDelay));
     }
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay)
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay) // Enemy KnockCo
     {
         if (myRigidbody2D != null && currentState != EnemyState.stagger)
         {

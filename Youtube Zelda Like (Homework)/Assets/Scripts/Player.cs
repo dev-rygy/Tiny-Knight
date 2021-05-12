@@ -8,12 +8,13 @@ public enum PlayerState
     walk,
     interact,
     attack,
-    stagger
+    stagger,
+    transition
 }
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Velocity")]
+    [Header("Player Movement")]
     public float walkSpeed = 5f; // Player walk speed
 
     [Header("Player State")]
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
 
     [Header("Coroutines")]
     public float attackDelay = 0.25f; // Attack freeze delay
+    public float transitionHalt = 2.5f; // Room Transition freeze delay
 
     [Header("Cached References")]
 
@@ -42,10 +44,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState != PlayerState.attack && currentState != PlayerState.stagger) // If Player is not attacking
+        if (currentState != PlayerState.attack && currentState != PlayerState.stagger
+            && currentState != PlayerState.transition) // If Player is not attacking / staggered / transitioning
         {
             MoveCharacter(); // Move the character every frame
             Attack(); // Attack on button press
+        }
+    }
+
+    public void ChangeState(PlayerState newState) // Change PlayerState
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
+        }
+    }
+
+    public void ChangeState(PlayerState oldState, PlayerState newState) // Change PlayerState only if currentState = oldState
+    {
+        if (currentState == oldState)
+        {
+            currentState = newState;
         }
     }
 
@@ -71,12 +90,12 @@ public class Player : MonoBehaviour
                 myAnimator.SetFloat("moveY", changeInVelocity.y); // change idle animation relative to where the Player is facing
             }
             myAnimator.SetBool("isWalking", true);
-            currentState = PlayerState.walk;
+            ChangeState(PlayerState.walk);
         }
         else
         {
             myAnimator.SetBool("isWalking", false);
-            currentState = PlayerState.idle; // change to idle if player is not walking
+            ChangeState(PlayerState.idle); // change to idle if player is not walking
         }
     }
 
@@ -89,31 +108,45 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PlayerKnockCo(float knocktime, float recoverDelay)
+    public void StartPlayerKnockCo(float knocktime, float recoverDelay) // Start KnockCo
     {
         StartCoroutine(KnockCo(knocktime, recoverDelay));
     }
 
-    private IEnumerator AttackCo()
+    public void StartPlayerTransitionCo()
+    {
+        StartCoroutine(TransitionCo());
+    }
+
+    private IEnumerator KnockCo(float knocktime, float recoverDelay) // Player KnockCo
+    {
+        if (myRigidbody2D != null && currentState != PlayerState.stagger)
+        {
+            ChangeState(PlayerState.stagger);
+            yield return new WaitForSeconds(knocktime);
+            myRigidbody2D.velocity = Vector2.zero;
+            yield return new WaitForSeconds(recoverDelay);
+            ChangeState(PlayerState.idle);
+        }
+    }
+
+    private IEnumerator AttackCo() // Player AttackCo
     {
         myRigidbody2D.velocity = Vector2.zero;
-        currentState = PlayerState.attack;
+        ChangeState(PlayerState.attack);
         myAnimator.SetBool("isAttacking", true);
         yield return null;
         myAnimator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(attackDelay);
-        currentState = PlayerState.idle;
+        ChangeState(PlayerState.idle);
     }
 
-    private IEnumerator KnockCo(float knocktime, float recoverDelay)
+    private IEnumerator TransitionCo() // Player TransitionCo
     {
-        if (myRigidbody2D != null && currentState != PlayerState.stagger)
-        {
-            currentState = PlayerState.stagger;
-            yield return new WaitForSeconds(knocktime);
-            myRigidbody2D.velocity = Vector2.zero;
-            yield return new WaitForSeconds(recoverDelay);
-            currentState = PlayerState.idle;
-        }
+        ChangeState(PlayerState.transition);
+        myAnimator.SetBool("isWalking", false);
+        myRigidbody2D.velocity = Vector2.zero;
+        yield return new WaitForSeconds(transitionHalt);
+        ChangeState(PlayerState.idle);
     }
 }

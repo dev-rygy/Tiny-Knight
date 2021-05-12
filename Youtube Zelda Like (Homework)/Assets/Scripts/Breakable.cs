@@ -16,7 +16,7 @@ public class Breakable : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    public IEnumerator BreakCo()
+    public IEnumerator BreakCo() // Object BreakCo
     {
         myAnimator.SetBool("isBreaking", true);
         yield return new WaitForSeconds(breakDelay);

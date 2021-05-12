@@ -24405,6 +24405,7 @@ MonoBehaviour:
   walkSpeed: 5
   currentState: 0
   attackDelay: 0.25
+  transitionHalt: 2.5
 --- !u!61 &136029424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24738,6 +24739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBreakObjects: 1
   thrust: 5
   knocktime: 0.2
   recoverDelay: 0.3
@@ -24965,7 +24967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ebaea734a7db43a68760412815632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerChange: {x: 0, y: 2, z: 0}
+  playerChange: {x: 0, y: 3, z: 0}
   transitionCam: {fileID: 1670410520}
   needText: 1
   placeName: LUCKY LAKE
@@ -25083,6 +25085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBreakObjects: 1
   thrust: 5
   knocktime: 0.2
   recoverDelay: 0.3
@@ -25472,9 +25475,9 @@ GameObject:
   - component: {fileID: 857939328}
   - component: {fileID: 857939332}
   - component: {fileID: 857939334}
+  - component: {fileID: 857939335}
   - component: {fileID: 857939331}
   - component: {fileID: 857939333}
-  - component: {fileID: 857939335}
   m_Layer: 0
   m_Name: Log
   m_TagString: Enemy
@@ -25627,8 +25630,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  health: 2
   enemyName: Log
+  health: 2
   baseAttack: 1
   moveSpeed: 2
   target: {fileID: 136029427}
@@ -25674,7 +25677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  canBreakObjects: 0
+  thrust: 7
   knocktime: 0.2
   recoverDelay: 0
 --- !u!1 &901439481
@@ -25855,6 +25859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBreakObjects: 1
   thrust: 5
   knocktime: 0.2
   recoverDelay: 0.3
@@ -25968,7 +25973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090ebaea734a7db43a68760412815632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerChange: {x: 0, y: -2, z: 0}
+  playerChange: {x: 0, y: -3, z: 0}
   transitionCam: {fileID: 1691079953}
   needText: 0
   placeName: 
@@ -26121,6 +26126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBreakObjects: 1
   thrust: 5
   knocktime: 0.2
   recoverDelay: 0.3

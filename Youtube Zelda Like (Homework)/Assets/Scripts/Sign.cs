@@ -19,13 +19,13 @@ public class Sign : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Interact") && playerInRange)
+        if(Input.GetButtonDown("Interact") && playerInRange) // If the Player is in range and the button "Interact is pressed"
         {
             promptDialogue();
         }
     }
 
-    private void promptDialogue()
+    private void promptDialogue() // Set specific dialogue box active
     {
         if (dialogueBox.activeInHierarchy)
         {
@@ -45,7 +45,7 @@ public class Sign : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision) // change playerInRange to true if player enters collider
     {
         if (collision.CompareTag("Player"))
         {
@@ -53,7 +53,7 @@ public class Sign : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision) // change playerInRange to false if player exits collider
     {
         if (collision.CompareTag("Player"))
         {

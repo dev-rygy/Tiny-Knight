@@ -4,62 +4,76 @@ using UnityEngine;
 
 public class HitBoxBehavior : MonoBehaviour
 {
+    [Header("Properties")]
+    public bool canBreakObjects = false;
+
     [Header("Knockback")]
     public float thrust = 2f; // The amount of thrust applied to the object collided w/
     public float knocktime = 0.2f; // The amount of time the object is in stagger
     public float recoverDelay = 0f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D targetCollider) // When the target's collider is hit by the attacker's collider
     {
-        if (collision.gameObject.CompareTag("Breakable")) // If Tag is "breakable"
+        BreakObject(targetCollider);
+        Knockback(targetCollider);
+    }
+
+    private void BreakObject(Collider2D targetCollider) // When the attackers collider comes in contact with object on layer "Breakable"
+    {
+        if (canBreakObjects == true // Can the attacking object break inanimate objects?
+            && targetCollider.gameObject.CompareTag("Breakable")) // Is the object of type "Breakable?
         {
-            StartCoroutine(collision.GetComponent<Breakable>().BreakCo()); // start the coroutine to break
+                StartCoroutine(targetCollider.GetComponent<Breakable>().BreakCo()); // start the coroutine to break
         }
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) // If collision Object is Player or Enemy
+    }
+
+    private void Knockback(Collider2D targetCollider) // When the attacker's collider comes in contact with object of type "Enemy" / "Player"
+    {
+        if (targetCollider.gameObject.CompareTag("Enemy") || targetCollider.gameObject.CompareTag("Player")) // If collision Object is Player or Enemy
         {
-            Rigidbody2D otherRigidbody2D = collision.GetComponent<Rigidbody2D>();
+            Rigidbody2D targetCollision = targetCollider.GetComponent<Rigidbody2D>();
 
-            Vector2 otherOffset = otherRigidbody2D.transform.position - transform.position; // help determine direction
+            Vector2 targetOffset = targetCollision.transform.position - transform.position; // help determine direction
 
-            if (otherRigidbody2D != null && otherRigidbody2D.gameObject.CompareTag("Enemy")
-                   && otherRigidbody2D.GetComponent<Enemy>().currentState != EnemyState.stagger) // Enemy collision
+            if (targetCollision != null && targetCollision.gameObject.CompareTag("Enemy")
+                   && targetCollision.GetComponent<Enemy>().currentState != EnemyState.stagger) // Enemy collision
             {
-                otherRigidbody2D.AddForce(KnockDirection(otherOffset), ForceMode2D.Impulse); // Force and direction applied to collision
-                otherRigidbody2D.GetComponent<Enemy>().EnemyKnockCo(otherRigidbody2D, knocktime, recoverDelay);
+                targetCollision.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
+                targetCollision.GetComponent<Enemy>().EnemyKnockCo(targetCollision, knocktime, recoverDelay); // Start KnockCo
             }
-            if (otherRigidbody2D != null && otherRigidbody2D.gameObject.CompareTag("Player")) // Player collision
+            if (targetCollision != null && targetCollision.gameObject.CompareTag("Player")) // Player collision
             {
-                otherRigidbody2D.AddForce(KnockDirection(otherOffset), ForceMode2D.Impulse); // Force and direction applied to collision
-                otherRigidbody2D.GetComponent<Player>().PlayerKnockCo(knocktime, recoverDelay);
+                targetCollision.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
+                targetCollision.GetComponent<Player>().StartPlayerKnockCo(knocktime, recoverDelay); // Start KnockCo
             }
         }
     }
 
-    private Vector2 KnockDirection(Vector2 otherOffset)
+    private Vector2 KnockDirection(Vector2 targetOffset) // Direction of knockback
     {
-        if (Mathf.Abs(otherOffset.x) > Mathf.Abs(otherOffset.y)) // if otherCollision positioned right/left 
+        if (Mathf.Abs(targetOffset.x) > Mathf.Abs(targetOffset.y)) // if otherCollision positioned right/left 
         {
-            if(otherOffset.x > 0) // if right
+            if(targetOffset.x > 0) // if right
             {
-                otherOffset = new Vector2(1f, 0f);
+                targetOffset = new Vector2(1f, 0f);
             }
             else // if left
             {
-                otherOffset = new Vector2(-1f, 0f);
+                targetOffset = new Vector2(-1f, 0f);
             }
         }
-        if (Mathf.Abs(otherOffset.x) < Mathf.Abs(otherOffset.y)) // if otherCollision positioned up/down 
+        if (Mathf.Abs(targetOffset.x) < Mathf.Abs(targetOffset.y)) // if otherCollision positioned up/down 
         {
-            if (otherOffset.y > 0) // if Up
+            if (targetOffset.y > 0) // if Up
             {
-                otherOffset = new Vector2(0f, 1f);
+                targetOffset = new Vector2(0f, 1f);
             }
             else // if down
             {
-                otherOffset = new Vector2(0f, -1f);
+                targetOffset = new Vector2(0f, -1f);
             }
         }
-        otherOffset = otherOffset * thrust;
-        return otherOffset;
+        targetOffset = targetOffset * thrust; // Implement thrust amt.
+        return targetOffset;
     }
 }
