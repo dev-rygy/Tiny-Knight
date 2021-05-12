@@ -9,19 +9,28 @@ public enum EnemyState
     attack,
     stagger,
     wakingUp,
-    sleeping
+    sleeping,
+    dead
 }
 
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy State")]
     public EnemyState currentState;
+    public bool invulnerable = false;
+
+    [Header("Enemy Stats")]
+    public FloatValue maxHealth;
+    public float health = 2f;
+    public float moveSpeed = 2f;
 
     [Header("Enemy Properties")]
     public string enemyName;
-    public int health;
-    public int baseAttack;
-    public float moveSpeed;
+
+    private void Awake()
+    {
+        health = maxHealth.initialValue;
+    }
 
     public void ChangeState(EnemyState newState) // Change EnemyState
     {
@@ -31,12 +40,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void EnemyKnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay) // Start KnockCo
+    public void Hit(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, float damage) // Start KnockCo and take damage
     {
-        StartCoroutine(KnockCo(myRigidbody2D, knocktime, recoverDelay));
+        if (invulnerable != true)
+            TakeDamage(damage);
+        if (health > 0f)
+            StartCoroutine(KnockCo(myRigidbody2D, knocktime, recoverDelay, damage));
     }
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay) // Enemy KnockCo
+    private void TakeDamage(float damage) // Take dmg and update hp
+    {
+        if (currentState != EnemyState.stagger && health > 0f)
+        {
+            health -= damage;
+        }
+        if (health <= 0f) // kill off the Enemy once health reaches 0
+        {
+            ChangeState(EnemyState.dead);
+            this.gameObject.SetActive(false); // will be put into a coroutine later
+            Debug.Log(enemyName + " has died.");
+        }
+        invulnerable = true;
+    }
+
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, float damage) // Enemy KnockCo
     {
         if (myRigidbody2D != null && currentState != EnemyState.stagger)
         {
@@ -45,6 +72,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
             yield return new WaitForSeconds(recoverDelay);
+            invulnerable = false;
             currentState = EnemyState.idle;
         }
     }

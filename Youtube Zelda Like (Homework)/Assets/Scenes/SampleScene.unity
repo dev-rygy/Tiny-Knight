@@ -24402,8 +24402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c52996a9a41fa40b844aa7f7b8eb11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
   currentState: 0
+  invulnerable: 0
+  health: 5
+  walkSpeed: 5
   attackDelay: 0.25
   transitionHalt: 2.5
 --- !u!61 &136029424
@@ -24739,10 +24741,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxName: Player Right Basic
   canBreakObjects: 1
   thrust: 1200
   knocktime: 0.2
   recoverDelay: 0.3
+  damage: 1
 --- !u!1 &472539115
 GameObject:
   m_ObjectHideFlags: 0
@@ -25085,10 +25089,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxName: Player Left Basic
   canBreakObjects: 1
   thrust: 1200
   knocktime: 0.2
   recoverDelay: 0.3
+  damage: 1
 --- !u!1 &739686942
 GameObject:
   m_ObjectHideFlags: 0
@@ -25630,13 +25636,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  enemyName: Log
-  health: 2
-  baseAttack: 1
+  invulnerable: 0
+  maxHealth: {fileID: 11400000, guid: c33371bec7daf0f47bcd4014aa382e94, type: 2}
+  health: 0
   moveSpeed: 2
+  enemyName: Log
   target: {fileID: 136029427}
   chaseRadius: 5
-  attackRadius: 1
+  attackRadius: 0
   homePosition: {fileID: 0}
   wakeUpdelay: 0.7
 --- !u!61 &857939334
@@ -25677,10 +25684,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxName: Log Touch
   canBreakObjects: 0
   thrust: 7
   knocktime: 0.2
   recoverDelay: 0
+  damage: 1
 --- !u!1 &901439481
 GameObject:
   m_ObjectHideFlags: 0
@@ -25859,10 +25868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxName: Player Down Basic
   canBreakObjects: 1
   thrust: 1200
   knocktime: 0.2
   recoverDelay: 0.3
+  damage: 1
 --- !u!1 &1008650360
 GameObject:
   m_ObjectHideFlags: 0
@@ -26126,10 +26137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7082a11778aef6b40bbcf8eb4a77ff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxName: Player Up Basic
   canBreakObjects: 1
   thrust: 1200
   knocktime: 0.2
   recoverDelay: 0.3
+  damage: 1
 --- !u!1 &1122747623
 GameObject:
   m_ObjectHideFlags: 0

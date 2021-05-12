@@ -26,7 +26,7 @@ public class RoomTransition : MonoBehaviour
             FindObjectOfType<Cameras>().ChangePlayerCam(transitionCam);
             transitionCam.SetActive(true);
 
-            FindObjectOfType<Player>().StartPlayerTransitionCo(); // Start Player Transition Co that stops the Player from moving while in transition
+            FindObjectOfType<Player>().Transition(); // Start Player Transition Co that stops the Player from moving while in transition
 
             if(needText) // If the area needs a title card
             {

@@ -9,23 +9,25 @@ public enum PlayerState
     interact,
     attack,
     stagger,
-    transition
+    transition,
+    dead
 }
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Movement")]
-    public float walkSpeed = 5f; // Player walk speed
-
     [Header("Player State")]
     public PlayerState currentState; // current PlayerState
+    public bool invulnerable = false;
+
+    [Header("Player Stats")]
+    public float health = 5;
+    public float walkSpeed = 5f; // Player walk speed
 
     [Header("Coroutines")]
     public float attackDelay = 0.25f; // Attack freeze delay
     public float transitionHalt = 2.5f; // Room Transition freeze delay
 
     [Header("Cached References")]
-
     // Private Chached References
     private Rigidbody2D myRigidbody2D; // cached Rigidbody2D reference
     private Vector2 changeInVelocity; // current velocity direction and magnitude on the player
@@ -108,12 +110,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void StartPlayerKnockCo(float knocktime, float recoverDelay) // Start KnockCo
+    public void Hit(float knocktime, float recoverDelay, float damage) // Start KnockCo and take damage
     {
-        StartCoroutine(KnockCo(knocktime, recoverDelay));
+        if (invulnerable != true)
+            TakeDamage(damage);
+        if (health > 0f)
+            StartCoroutine(KnockCo(knocktime, recoverDelay));
     }
 
-    public void StartPlayerTransitionCo()
+    private void TakeDamage(float damage) // Take dmg and update hp
+    {
+        if (currentState != PlayerState.stagger && health > 0f)
+        {
+            health -= damage;
+        }
+        if (health <= 0f) // kill off the Player once health reaches 0
+        {
+            ChangeState(PlayerState.dead);
+            this.gameObject.SetActive(false); // will be put into a coroutine later
+            Debug.Log("Player has died.");
+        }
+        invulnerable = true;
+    }
+
+    public void Transition()
     {
         StartCoroutine(TransitionCo());
     }
@@ -126,6 +146,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
             yield return new WaitForSeconds(recoverDelay);
+            invulnerable = false;
             ChangeState(PlayerState.idle);
         }
     }
