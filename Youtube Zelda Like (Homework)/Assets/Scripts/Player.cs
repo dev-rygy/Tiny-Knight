@@ -11,7 +11,7 @@ public enum PlayerState
     stagger
 }
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("Player Velocity")]
     public float walkSpeed = 5f; // Player walk speed

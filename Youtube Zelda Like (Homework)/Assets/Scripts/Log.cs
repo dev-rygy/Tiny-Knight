@@ -9,14 +9,19 @@ public class Log : Enemy
     public float attackRadius;
     public Transform homePosition;
 
+    [Header("Coroutines")]
+    public float wakeUpdelay = 2f;
+
     // private cache
     private Rigidbody2D myRidgidBody;
+    private Animator myAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = EnemyState.idle;
+        currentState = EnemyState.sleeping;
         myRidgidBody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform; // plug in the player's position in the world
     }
 
@@ -31,21 +36,31 @@ public class Log : Enemy
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius
                 && Vector2.Distance(target.position, transform.position) > attackRadius)
         {
-            if (currentState == EnemyState.idle || currentState == EnemyState.walk
-                    && currentState != EnemyState.stagger)
+            if (currentState == EnemyState.sleeping)
+                StartCoroutine(WakeUpCo());
+
+            if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping)
             {
                 Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 myRidgidBody.MovePosition(temp);
-                ChangeState(EnemyState.walk);
             }
+        }
+        else
+        {
+            myAnimator.SetBool("isAwake", false);
+            ChangeState(EnemyState.sleeping);
         }
     }
 
-    private void ChangeState(EnemyState newState)
+    private IEnumerator WakeUpCo()
     {
-        if(currentState != newState)
-        {
-            currentState = newState;
-        }
+        myAnimator.SetBool("isAwake", true);
+        yield return new WaitForSeconds(wakeUpdelay);
+        ChangeState(EnemyState.walk);
+    }
+
+    public void isHurt()
+    {
+        myAnimator.SetTrigger("hurtTrigger");
     }
 }

@@ -30,7 +30,7 @@ public class HitBoxBehavior : MonoBehaviour
             if (otherRigidbody2D != null && otherRigidbody2D.gameObject.CompareTag("Player")) // Player collision
             {
                 otherRigidbody2D.AddForce(KnockDirection(otherOffset), ForceMode2D.Impulse); // Force and direction applied to collision
-                otherRigidbody2D.GetComponent<PlayerMovement>().PlayerKnockCo(knocktime, recoverDelay);
+                otherRigidbody2D.GetComponent<Player>().PlayerKnockCo(knocktime, recoverDelay);
             }
         }
     }
@@ -59,7 +59,6 @@ public class HitBoxBehavior : MonoBehaviour
                 otherOffset = new Vector2(0f, -1f);
             }
         }
-
         otherOffset = otherOffset * thrust;
         return otherOffset;
     }

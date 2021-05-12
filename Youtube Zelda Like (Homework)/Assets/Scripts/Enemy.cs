@@ -7,7 +7,9 @@ public enum EnemyState
     idle,
     walk,
     attack,
-    stagger
+    stagger,
+    wakingUp,
+    sleeping
 }
 
 public class Enemy : MonoBehaviour
@@ -17,6 +19,14 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
+
+    public void ChangeState(EnemyState newState)
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
+        }
+    }
 
     public void EnemyKnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay)
     {
@@ -28,6 +38,7 @@ public class Enemy : MonoBehaviour
         if (myRigidbody2D != null && currentState != EnemyState.stagger)
         {
             currentState = EnemyState.stagger;
+            FindObjectOfType<Log>().isHurt();
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
             yield return new WaitForSeconds(recoverDelay);
