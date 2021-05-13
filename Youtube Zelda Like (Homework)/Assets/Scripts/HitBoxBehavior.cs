@@ -44,7 +44,7 @@ public class HitBoxBehavior : MonoBehaviour
                    && targetCollision.GetComponent<Enemy>().currentState != EnemyState.stagger
                    && targetCollision.GetComponent<Enemy>().currentState != EnemyState.dead) // Enemy collision
             {
-                Debug.Log("Player did " + damage + " with " + hitboxName + "!");
+                Debug.Log("Player did " + damage + " damage with " + hitboxName + "!");
                 targetCollision.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
                 targetCollision.GetComponent<Enemy>().Hit(targetCollision, knocktime, recoverDelay, damage); // Start KnockCo and take dmg
             }
@@ -53,7 +53,7 @@ public class HitBoxBehavior : MonoBehaviour
                     && targetCollision.GetComponent<Player>().currentState != PlayerState.stagger
                     && targetCollision.GetComponent<Player>().currentState != PlayerState.dead) // Player collision
             {
-                Debug.Log(this.GetComponent<Enemy>().enemyName + " did " + damage + " with " + hitboxName + "!");
+                Debug.Log(this.GetComponent<Enemy>().enemyName + " did " + damage + " damage with " + hitboxName + "!");
                 targetCollision.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
                 targetCollision.GetComponent<Player>().Hit(knocktime, recoverDelay, damage); // Start KnockCo and take dmg
             }
