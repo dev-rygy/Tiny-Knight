@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
     public bool invulnerable = false;
 
     [Header("Enemy Stats")]
-    public FloatValue maxHealth;
-    public float health = 2f;
+    public FloatReference maxHealth;
+    public float health;
     public float moveSpeed = 2f;
 
     [Header("Enemy Properties")]
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        health = maxHealth.initialValue;
+        health = maxHealth.Value();
     }
 
     public void ChangeState(EnemyState newState) // Change EnemyState
