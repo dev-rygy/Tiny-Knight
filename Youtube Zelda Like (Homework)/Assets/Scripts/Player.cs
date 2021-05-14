@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
     public bool invulnerable = false;
 
     [Header("Player Stats")]
-    public float health = 5;
+    public FloatReference currentHealth; // currentHealth Scriptable Object Ref
+    public SignalSender playerHealthSignal;
+    public float health;
     public float walkSpeed = 5f; // Player walk speed
 
     [Header("Coroutines")]
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = currentHealth.GetValue();
         myRigidbody2D = GetComponent<Rigidbody2D>(); // Set myRigidbody to the object's Rigidbody component
         myAnimator = GetComponent<Animator>(); // Set myAnimator to the object's Animator component
         myAnimator.SetFloat("moveX", 0);
@@ -114,17 +117,18 @@ public class Player : MonoBehaviour
     {
         if (invulnerable != true)
             TakeDamage(damage);
-        if (health > 0f)
+        if (currentHealth.GetValue() > 0f)
             StartCoroutine(KnockCo(knocktime, recoverDelay));
     }
 
     private void TakeDamage(float damage) // Take dmg and update hp
     {
-        if (currentState != PlayerState.stagger && health > 0f)
+        if (currentState != PlayerState.stagger && currentHealth.GetValue() > 0f)
         {
-            health -= damage;
+            playerHealthSignal.Raise();
+            currentHealth.SubtractValue(damage); // subtract the currentHealth from the scriptable object
         }
-        if (health <= 0f) // kill off the Player once health reaches 0
+        if (currentHealth.GetValue() <= 0f) // kill off the Player once currentHealth reaches 0
         {
             ChangeState(PlayerState.dead);
             this.gameObject.SetActive(false); // will be put into a coroutine later

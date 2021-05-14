@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        health = maxHealth.Value();
+        health = maxHealth.GetValue();
     }
 
     public void ChangeState(EnemyState newState) // Change EnemyState

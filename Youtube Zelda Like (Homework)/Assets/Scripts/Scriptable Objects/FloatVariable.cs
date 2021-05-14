@@ -6,4 +6,9 @@ using UnityEngine;
 public class FloatVariable : ScriptableObject
 {
     public float value;
+
+    public void SubtractValue(float subtrahend)
+    {
+        value -= subtrahend;
+    }
 }
