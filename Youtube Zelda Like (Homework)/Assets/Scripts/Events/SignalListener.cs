@@ -5,13 +5,11 @@ using UnityEngine.Events; // Using Unity's Event System
 
 public class SignalListener : MonoBehaviour
 {
+    [Tooltip("Event to register with.")]
     public SignalSender signal;
+
+    [Tooltip("Response to invoke when Event is raised.")]
     public UnityEvent signalEvent;
-    
-    public void OnSignalRaised()
-    {
-        signalEvent.Invoke(); // Call the event
-    }
 
     private void OnEnable() // Create a listener
     {
@@ -21,5 +19,10 @@ public class SignalListener : MonoBehaviour
     private void OnDisable() // Destroy a listener
     {
         signal.DeregisterListener(this);
+    }
+
+    public void OnSignalRaised()
+    {
+        signalEvent.Invoke(); // Call the event
     }
 }

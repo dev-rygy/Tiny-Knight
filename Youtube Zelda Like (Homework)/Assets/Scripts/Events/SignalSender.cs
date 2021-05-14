@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Signal Sender")]
 public class SignalSender : ScriptableObject
 {
-    public List<SignalListener> listenerList = new List<SignalListener>(); // list of signal listeners listening to this sender
+    private readonly List<SignalListener> listenerList = new List<SignalListener>(); // list of signal listeners listening to this sender
 
     public void Raise() // raise a signal
     {
@@ -17,11 +17,13 @@ public class SignalSender : ScriptableObject
 
     public void RegisterListener(SignalListener listener) // add listener to list
     {
-        listenerList.Add(listener);
+        if (!listenerList.Contains(listener))
+            listenerList.Add(listener);
     }
 
     public void DeregisterListener(SignalListener listener) // remove listener from list
     {
-        listenerList.Remove(listener);
+        if (listenerList.Contains(listener))
+            listenerList.Remove(listener);
     }
 }
