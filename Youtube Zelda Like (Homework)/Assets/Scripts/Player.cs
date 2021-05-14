@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     public FloatReference currentHealth; // currentHealth Scriptable Object Ref
-    public SignalSender playerHealthSignal;
+    public SignalSender playerHealthSignal; // new SignalSender of type Player Health
     private float health; // private variable for Debug Mode
     public float walkSpeed = 5f; // Player walk speed
 
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         if (currentState != PlayerState.stagger && currentHealth.GetRuntimeValue() > 0f) // If Player is alive and not staggered
         {
             currentHealth.SubtractRuntimeValue(damage); // subtract the currentHealth from the scriptable object
-            playerHealthSignal.Raise(); // Raise playerHealthSignal
+            playerHealthSignal.Raise(); // Raise all listeners of playerHealthSignal
         }
         if (currentHealth.GetRuntimeValue() <= 0f) // kill off the Player once currentHealth reaches 0
         {

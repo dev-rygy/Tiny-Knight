@@ -9,7 +9,7 @@ public class SignalSender : ScriptableObject
 
     public void Raise() // raise a signal
     {
-        for (int i = listenerList.Count - 1; i >= 0; i--) // go through the list backwords
+        for (int i = listenerList.Count - 1; i >= 0; i--) // go through the list of listeners backwords
         {
             listenerList[i].OnSignalRaised();
         }
