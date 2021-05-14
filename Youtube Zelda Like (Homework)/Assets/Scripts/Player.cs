@@ -17,12 +17,12 @@ public class Player : MonoBehaviour
 {
     [Header("Player State")]
     public PlayerState currentState; // current PlayerState
-    public bool invulnerable = false;
+    private bool invulnerable = false;
 
     [Header("Player Stats")]
     public FloatReference currentHealth; // currentHealth Scriptable Object Ref
     public SignalSender playerHealthSignal;
-    public float health;
+    private float health; // private variable for Debug Mode
     public float walkSpeed = 5f; // Player walk speed
 
     [Header("Coroutines")]
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = currentHealth.GetValue();
         myRigidbody2D = GetComponent<Rigidbody2D>(); // Set myRigidbody to the object's Rigidbody component
         myAnimator = GetComponent<Animator>(); // Set myAnimator to the object's Animator component
         myAnimator.SetFloat("moveX", 0);
@@ -49,6 +48,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health = currentHealth.GetRuntimeValue(); // To check the current health in inspector in Debug Mode
+
         if (currentState != PlayerState.attack && currentState != PlayerState.stagger
             && currentState != PlayerState.transition) // If Player is not attacking / staggered / transitioning
         {
@@ -115,20 +116,20 @@ public class Player : MonoBehaviour
 
     public void Hit(float knocktime, float recoverDelay, float damage) // Start KnockCo and take damage
     {
-        if (invulnerable != true)
+        if (invulnerable != true) // Take damage if Player is not invulnerable
             TakeDamage(damage);
-        if (currentHealth.GetValue() > 0f)
+        if (currentHealth.GetRuntimeValue() > 0f) // Run KnockCo if Player is alive
             StartCoroutine(KnockCo(knocktime, recoverDelay));
     }
 
     private void TakeDamage(float damage) // Take dmg and update hp
     {
-        if (currentState != PlayerState.stagger && currentHealth.GetValue() > 0f)
+        if (currentState != PlayerState.stagger && currentHealth.GetRuntimeValue() > 0f) // If Player is alive and not staggered
         {
-            playerHealthSignal.Raise();
-            currentHealth.SubtractValue(damage); // subtract the currentHealth from the scriptable object
+            currentHealth.SubtractRuntimeValue(damage); // subtract the currentHealth from the scriptable object
+            playerHealthSignal.Raise(); // Raise playerHealthSignal
         }
-        if (currentHealth.GetValue() <= 0f) // kill off the Player once currentHealth reaches 0
+        if (currentHealth.GetRuntimeValue() <= 0f) // kill off the Player once currentHealth reaches 0
         {
             ChangeState(PlayerState.dead);
             this.gameObject.SetActive(false); // will be put into a coroutine later

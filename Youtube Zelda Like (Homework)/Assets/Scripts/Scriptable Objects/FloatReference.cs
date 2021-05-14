@@ -15,7 +15,20 @@ public class FloatReference
         return useConstant ? constantValue : variable.value;
     }
 
-    public void SubtractValue(float subtrahend)
+    public float GetRuntimeValue()
+    {
+        if (useConstant == false)
+        {
+            return variable.runtimeValue;
+        }
+        else
+        {
+            Debug.Log("FloatReference: Cannot return runtimeValue of constant type (returned constant value)");
+            return constantValue;
+        }
+    }
+
+    public void SubtractValue(float subtrahend) // Subtract from Constant or FV value
     {
         if (useConstant == true)
         {
@@ -24,6 +37,18 @@ public class FloatReference
         else
         {
             variable.SubtractValue(subtrahend);
+        }
+    }
+
+    public void SubtractRuntimeValue(float subtrahend) // Subtract from RTFV value
+    {
+        if (useConstant == false)
+        {
+            variable.SubtractRuntimeValue(subtrahend);
+        }
+        else
+        {
+            Debug.Log("FloatReference: Cannot subtract runtimeValue of constant type"); // Error if passing constant value
         }
     }
 }

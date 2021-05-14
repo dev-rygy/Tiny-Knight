@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy State")]
     public EnemyState currentState;
-    public bool invulnerable = false;
+    private bool invulnerable = false;
 
     [Header("Enemy Stats")]
     public FloatReference maxHealth;
-    public float health;
+    private float health;
     public float moveSpeed = 2f;
 
     [Header("Enemy Properties")]
