@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1005b3ea1608c704284707f0bc6e24c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Meadows
-  playerPosition: {x: 4.4, y: 6.2}
+  sceneToLoad: N/A
+  playerPosition: {x: 0, y: 0}
   playerStorage: {fileID: 11400000, guid: d68fa31ec8e681d4780ef87b4020c9d3, type: 2}
+  fadeInPanel: {fileID: 6151163313894914758, guid: 6ebdbfcd6a457bf4782c4f603a243f59, type: 3}
+  fadeOutPanel: {fileID: 6151163313894914758, guid: 300160ee1adfeeb4089ca437dfbfc792, type: 3}
+  fadeDelay: 0.07

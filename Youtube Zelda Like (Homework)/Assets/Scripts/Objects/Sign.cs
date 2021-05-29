@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
-    [Header ("Caches")]
+    [Header ("Context Clue")]
+    public SignalSender contextOn;
+    public SignalSender contextOff;
+
+    [Header ("Text")]
     public GameObject dialogueBox;
     public Text dialogText;
     public Dialogue scriptableObj;
-
-    [Header("Text")]
     public string dialog;
     public bool usingScriptableObj;
 
@@ -49,6 +51,7 @@ public class Sign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            contextOn.Raise();
             playerInRange = true;
         }
     }
@@ -57,6 +60,7 @@ public class Sign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            contextOff.Raise();
             playerInRange = false;
             dialogueBox.SetActive(false);
         }

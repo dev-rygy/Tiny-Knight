@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2852639759187560526}
   - component: {fileID: 2852639759187560527}
   - component: {fileID: 2852639759187560524}
+  - component: {fileID: 1594977169}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -102,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,16 +125,35 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.41053343}
+  m_Offset: {x: 0, y: -0.20986032}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.8210669}
+  m_Size: {x: 1, y: 1.4197206}
   m_EdgeRadius: 0
+--- !u!114 &1594977169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852639759187560525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4ea4a52cd169b49adc20de51eb536f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 364aee1bb0d5e874d9878f7513899c55, type: 2}
+  contextOff: {fileID: 11400000, guid: 9eeb3b1c3ae17ea46850dc534d33384b, type: 2}
+  dialogueBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  scriptableObj: {fileID: 0}
+  dialog: LUCKY LAKE
+  usingScriptableObj: 0
