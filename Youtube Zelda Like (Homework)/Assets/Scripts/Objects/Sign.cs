@@ -51,7 +51,7 @@ public class Sign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            contextOn.Raise();
+            contextOn.Raise(); // Raise ContextClue Signal
             playerInRange = true;
         }
     }
@@ -60,7 +60,7 @@ public class Sign : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            contextOff.Raise();
+            contextOff.Raise(); // Raise ContextClue Signal
             playerInRange = false;
             dialogueBox.SetActive(false);
         }
