@@ -39108,6 +39108,10 @@ PrefabInstance:
       propertyPath: dialogueBox
       value: 
       objectReference: {fileID: 472539115}
+    - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: contextSignal
+      value: 
+      objectReference: {fileID: 11400000, guid: 364aee1bb0d5e874d9878f7513899c55, type: 2}
     - target: {fileID: 2852639759187560525, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: m_Name
       value: Sign
@@ -39205,6 +39209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868304060, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: signalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeContext
+      objectReference: {fileID: 0}
     - target: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -39253,7 +39261,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 868304059, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
 --- !u!1001 &7694197838692013374
 PrefabInstance:

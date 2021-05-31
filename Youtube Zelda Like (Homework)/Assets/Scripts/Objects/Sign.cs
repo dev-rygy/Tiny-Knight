@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour
 {
-    [Header ("Context Clue")]
-    public SignalSender contextOn;
-    public SignalSender contextOff;
+    [Header("Context Clue")]
+    public SignalSender contextSignal;
 
     [Header ("Text")]
     public GameObject dialogueBox;
@@ -49,18 +48,18 @@ public class Sign : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision) // change playerInRange to true if player enters collider
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            contextOn.Raise(); // Raise ContextClue Signal
+            contextSignal.Raise(); // Raise ContextClue Signal
             playerInRange = true;
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision) // change playerInRange to false if player exits collider
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            contextOff.Raise(); // Raise ContextClue Signal
+            contextSignal.Raise(); // Raise ContextClue Signal
             playerInRange = false;
             dialogueBox.SetActive(false);
         }

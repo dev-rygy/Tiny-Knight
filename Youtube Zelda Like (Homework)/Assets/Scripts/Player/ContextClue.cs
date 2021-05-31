@@ -5,13 +5,18 @@ using UnityEngine;
 public class ContextClue : MonoBehaviour
 {
     public GameObject contextClue;
+    public bool contextActive = false;
 
-    public void Enable() // Will set Context clue "GameObject" to ON, through the ContextClue "script" on the player
+    public void ChangeContext()
     {
-        contextClue.SetActive(true);
-    }
-    public void Disable() // Sets Context Clue GameObject to OFF
-    {
-        contextClue.SetActive(false);
+        contextActive = !contextActive;
+        if(contextActive)
+        {
+            contextClue.SetActive(true);
+        }
+        else
+        {
+            contextClue.SetActive(false);
+        }
     }
 }
