@@ -45,8 +45,7 @@ public class HitBoxBehavior : MonoBehaviour
                    && targetRigidbody2D.GetComponent<Enemy>().currentState != EnemyState.dead) // Enemy collision
             {
                 Debug.Log("Player did " + damage + " damage with " + hitboxName + "!");
-                targetRigidbody2D.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
-                targetRigidbody2D.GetComponent<Enemy>().Hit(targetRigidbody2D, knocktime, recoverDelay, damage); // Start KnockCo and take dmg
+                targetRigidbody2D.GetComponent<Enemy>().Hit(targetRigidbody2D, knocktime, recoverDelay, damage, KnockDirection(targetOffset)); // Start KnockCo and take dmg
             }
 
             if (targetRigidbody2D != null && targetRigidbody2D.gameObject.CompareTag("Player")

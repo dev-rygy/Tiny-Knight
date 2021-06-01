@@ -40,12 +40,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Hit(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, float damage) // Start KnockCo and take damage
+    public void Hit(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, float damage, Vector2 knockDirection) // Start KnockCo and take damage
     {
         if (invulnerable != true)
             TakeDamage(damage);
         if (health > 0f)
-            StartCoroutine(KnockCo(myRigidbody2D, knocktime, recoverDelay, damage));
+            StartCoroutine(KnockCo(myRigidbody2D, knocktime, recoverDelay, knockDirection));
     }
 
     private void TakeDamage(float damage) // Take dmg and update hp
@@ -63,11 +63,12 @@ public class Enemy : MonoBehaviour
         invulnerable = true;
     }
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, float damage) // Enemy KnockCo
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, Vector2 knockDirection) // Enemy KnockCo
     {
         if (myRigidbody2D != null && currentState != EnemyState.stagger)
         {
-            currentState = EnemyState.stagger;
+            ChangeState(EnemyState.stagger);
+            myRigidbody2D.AddForce(knockDirection, ForceMode2D.Impulse); // Force and direction applied to collision
             myRigidbody2D.GetComponent<Log>().isHurt();
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;

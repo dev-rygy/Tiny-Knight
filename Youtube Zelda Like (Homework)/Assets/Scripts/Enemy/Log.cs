@@ -11,7 +11,7 @@ public class Log : Enemy
     public Transform homePosition;
 
     [Header("Coroutines")]
-    public float wakeUpdelay = 2f;
+    public float wakeUpdelay = 0.7f;
 
     // private cache
     private Rigidbody2D myRidgidBody;
@@ -37,7 +37,8 @@ public class Log : Enemy
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius // Check if the target's distance is close enough
                 && Vector2.Distance(target.position, transform.position) > attackRadius)
         {
-            WakeUp(); // Wake up the Log
+            if (currentState == EnemyState.sleeping)
+                WakeUp(); // Wake up the Log
             MoveToTarget(); // Move towards the target
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)// Target out of range = fall back asleep
@@ -49,7 +50,6 @@ public class Log : Enemy
 
     private void WakeUp() // Wake up if sleeping
     {
-        if (currentState == EnemyState.sleeping)
             StartCoroutine(WakeUpCo());
     }
 
@@ -101,14 +101,9 @@ public class Log : Enemy
     {
         myAnimator.SetBool("isAwake", true);
         yield return new WaitForSeconds(wakeUpdelay);
-        ChangeState(EnemyState.walk);
+        ChangeState(EnemyState.idle);
     }
-    /*
-    private IEnumerator GoToSleepCo()
-    {
 
-    }
-    */
     public void isHurt() // hurt animation if staggered from Enemy script
     {
         myAnimator.SetTrigger("hurtTrigger");
