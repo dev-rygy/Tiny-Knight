@@ -57,6 +57,7 @@ public class Log : Enemy
     {
         if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping)
         {
+            ChangeState(EnemyState.walk);
             Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             ChangeAnimDirection(temp - Vector3Extension.AsVector2(transform.position));
             myRidgidBody.MovePosition(temp);

@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         if (myRigidbody2D != null && currentState != EnemyState.stagger)
         {
             currentState = EnemyState.stagger;
-            FindObjectOfType<Log>().isHurt();
+            myRigidbody2D.GetComponent<Log>().isHurt();
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
             yield return new WaitForSeconds(recoverDelay);
