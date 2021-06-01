@@ -42,8 +42,8 @@ public class Log : Enemy
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)// Target out of range = fall back asleep
         {
-            myAnimator.SetBool("isAwake", false);
             ChangeState(EnemyState.sleeping);
+            myAnimator.SetBool("isAwake", false);
         }
     }
 
@@ -55,7 +55,8 @@ public class Log : Enemy
 
     private void MoveToTarget() // Move towards the target if not staggered or sleeping
     {
-        if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping)
+        if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping
+                && myAnimator.GetBool("isAwake"))
         {
             ChangeState(EnemyState.walk);
             Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -102,7 +103,12 @@ public class Log : Enemy
         yield return new WaitForSeconds(wakeUpdelay);
         ChangeState(EnemyState.walk);
     }
+    /*
+    private IEnumerator GoToSleepCo()
+    {
 
+    }
+    */
     public void isHurt() // hurt animation if staggered from Enemy script
     {
         myAnimator.SetTrigger("hurtTrigger");
