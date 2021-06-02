@@ -312,6 +312,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868304060, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: signalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeContext
+      objectReference: {fileID: 0}
     - target: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -364,7 +368,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 868304059, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
 --- !u!50 &1551149074
 Rigidbody2D:

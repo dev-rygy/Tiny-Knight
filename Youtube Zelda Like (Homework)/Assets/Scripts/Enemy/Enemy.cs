@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
         {
             ChangeState(EnemyState.stagger);
             myRigidbody2D.AddForce(knockDirection, ForceMode2D.Impulse); // Force and direction applied to collision
+            Debug.Log(knockDirection);
             myRigidbody2D.GetComponent<Log>().isHurt();
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
