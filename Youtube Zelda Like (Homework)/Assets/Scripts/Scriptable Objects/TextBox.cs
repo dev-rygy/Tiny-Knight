@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Dialoge")]
-public class Dialogue : ScriptableObject
+[CreateAssetMenu(menuName = "Text Box")]
+public class TextBox : ScriptableObject
 {
     [TextArea(14, 10)] [SerializeField] string DialogueText; // Creates a text field that holds a string
 

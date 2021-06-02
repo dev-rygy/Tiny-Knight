@@ -38969,17 +38969,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: dialogue
+      value: LUCKY LAKE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 1687701919}
+    - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: objectName
+      value: Lucky Lake Sign
+      objectReference: {fileID: 0}
     - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: dialogueBox
       value: 
       objectReference: {fileID: 472539115}
     - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1687701919}
+    - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: contextSignal
       value: 
       objectReference: {fileID: 11400000, guid: 364aee1bb0d5e874d9878f7513899c55, type: 2}
+    - target: {fileID: 1594977169, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: usingScriptableObj
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2852639759187560525, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: m_Name
       value: Sign
@@ -39026,6 +39042,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2852639759187560529, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: dialogue
+      value: LUCKY LAKE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 472539115}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1687701919}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: contextSignal
+      value: 
+      objectReference: {fileID: 11400000, guid: 364aee1bb0d5e874d9878f7513899c55, type: 2}
+    - target: {fileID: 4814052287313049688, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
+      propertyPath: usingScriptableObj
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -39147,18 +39187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log
       objectReference: {fileID: 0}
-    - target: {fileID: 7694197838409091256, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7694197838409091259, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 136029427}
-    - target: {fileID: 7694197838409091259, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
-      propertyPath: wakeUpdelay
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 7694197838409091260, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -39202,10 +39234,6 @@ PrefabInstance:
     - target: {fileID: 7694197838409091260, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7694197838409091261, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
