@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cc0c8221bd93d479182db36961ac2b, type: 3}
   m_Name: LogHealth
   m_EditorClassIdentifier: 
-  value: 100
+  value: 3
