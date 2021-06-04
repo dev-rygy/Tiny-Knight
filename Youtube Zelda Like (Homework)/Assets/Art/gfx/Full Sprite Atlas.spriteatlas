@@ -1731,7 +1731,6 @@ SpriteAtlas:
   - {fileID: -2017960369268865016, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: -6835189599539173722, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: 679739729869728943, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
-  - {fileID: 5248155131499935147, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: -3303779423006393323, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: -5008138227279614530, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: 122268285079091143, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
@@ -1786,7 +1785,9 @@ SpriteAtlas:
   - {fileID: -389262940572705114, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: 5775892167768770587, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
   - {fileID: 7274838496166343488, guid: 7b5bb1aaf32d1b44aae2f51e5e219e21, type: 3}
+  - {fileID: 21300000, guid: 4629afdab04cec344ad98d92e28c1111, type: 3}
   - {fileID: 21300000, guid: d2b591fd3ef3e5643bd9188acd6afcbf, type: 3}
+  - {fileID: 21300000, guid: 2437fc4e8cfb6514ca04738867557950, type: 3}
   m_PackedSpriteNamesToIndex:
   - character_14
   - character_15
@@ -3469,7 +3470,6 @@ SpriteAtlas:
   - character_58
   - character_10
   - character_11
-  - character_12
   - character_13
   - character_38
   - character_39
@@ -3524,7 +3524,9 @@ SpriteAtlas:
   - character_44
   - character_72
   - character_70
+  - DungeonKey
   - font
+  - key
   m_RenderDataMap: {}
   m_Tag: Full Sprite Atlas
   m_IsVariant: 0
