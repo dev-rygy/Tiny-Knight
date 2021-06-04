@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
     [Header("Transitions")]
     public VectorValue transitionPosition;
 
-    [Header("Cached References")]
+    [Header("Inventory")]
+    public Inventory playerInventory;
+    public SpriteRenderer receivedItemSprite;
+
     // Private Chached References
     private Rigidbody2D myRigidbody2D; // cached Rigidbody2D reference
     private Vector2 changeInVelocity; // current velocity direction and magnitude on the player
@@ -55,7 +58,7 @@ public class Player : MonoBehaviour
         health = currentHealth.GetRuntimeValue(); // To check the current health in inspector in Debug Mode
 
         if (currentState != PlayerState.attack && currentState != PlayerState.stagger
-            && currentState != PlayerState.transition) // If Player is not attacking / staggered / transitioning
+            && currentState != PlayerState.transition && currentState != PlayerState.interact) // If Player is not attacking / staggered / transitioning
         {
             MoveCharacter(); // Move the character every frame
             Attack(); // Attack on button press
@@ -109,7 +112,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Attack() // Runs attack Co if Player presses attack button
+    public void RaiseItem()
+    {
+        if (currentState != PlayerState.interact)
+        {
+            myAnimator.SetBool("isRaisingItem", true);
+            currentState = PlayerState.interact;
+            receivedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+        }
+        else
+        {
+            myAnimator.SetBool("isRaisingItem", false);
+            currentState = PlayerState.idle;
+            receivedItemSprite.sprite = null;
+        }
+    }
+
+    private void Attack() // Runs attack Co if Player presses attack button
     {
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack
              && currentState != PlayerState.stagger)

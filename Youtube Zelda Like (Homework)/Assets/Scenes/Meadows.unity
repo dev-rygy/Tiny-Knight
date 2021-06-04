@@ -24361,6 +24361,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
   m_PrefabInstance: {fileID: 7595285882916626997}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &326609083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7595285882783090394, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+  m_PrefabInstance: {fileID: 7595285882916626997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c52996a9a41fa40b844aa7f7b8eb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &341266092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24534,7 +24545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376235781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.15, y: 26.5, z: 0}
+  m_LocalPosition: {x: 3.28, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24553,6 +24564,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextSignal: {fileID: 11400000, guid: 364aee1bb0d5e874d9878f7513899c55, type: 2}
+  dialogueBox: {fileID: 472539115}
+  dialogueText: {fileID: 1687701919}
+  dialogue: 
+  usingScriptableObj: 0
+  scriptableObj: {fileID: 0}
+  contents: {fileID: 11400000, guid: d5448da609f9aa84383a22236e7f6c6d, type: 2}
+  raiseItem: {fileID: 11400000, guid: 5064cc4517e9fc34f92fbb41f0d0a06e, type: 2}
+  triggerCollider: {fileID: 376235787}
+  playerInventory: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
 --- !u!61 &376235786
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24615,6 +24635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398701884}
   - component: {fileID: 398701885}
+  - component: {fileID: 398701886}
   m_Layer: 6
   m_Name: Recieved Item
   m_TagString: Untagged
@@ -24688,6 +24709,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &398701886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398701883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfc9288caf06874389420850cfba5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 5064cc4517e9fc34f92fbb41f0d0a06e, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 326609083}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: RaiseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &472539115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2324220307108334018, guid: e56ee7efed829ad4bba91cca7bcfc00d, type: 3}
@@ -39423,6 +39472,14 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7595285882783090394, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
+    - target: {fileID: 7595285882783090394, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: receivedItemSprite
+      value: 
+      objectReference: {fileID: 398701885}
     - target: {fileID: 7595285882783090395, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_Name
       value: Player

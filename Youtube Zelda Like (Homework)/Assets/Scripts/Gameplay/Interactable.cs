@@ -9,6 +9,20 @@ public class Interactable : MonoBehaviour
 
     // private
     private bool playerInRange;
+    private bool isChest = false; // private variable for Chest Object
+
+    public bool GetIsChest()
+    {
+        return isChest;
+    }
+
+    public void ChestSwitch() // Change isChest bool
+    {
+        if (!isChest)
+            isChest = true;
+        else
+            isChest = false;
+    }
 
     public bool GetPlayerInRange()
     {
@@ -28,7 +42,8 @@ public class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            contextSignal.Raise(); // Raise ContextClue Signal
+            if(!isChest)
+                contextSignal.Raise(); // Raise ContextClue Signal
             playerInRange = false;
         }
     }
