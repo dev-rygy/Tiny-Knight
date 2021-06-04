@@ -42,8 +42,7 @@ public class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            if(!isChest)
-                contextSignal.Raise(); // Raise ContextClue Signal
+            contextSignal.Raise(); // Raise ContextClue Signal
             playerInRange = false;
         }
     }

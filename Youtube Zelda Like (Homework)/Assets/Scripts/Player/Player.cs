@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [Header("Coroutines")]
     public float attackDelay = 0.25f; // Attack freeze delay
     public float transitionHalt = 2.5f; // Room Transition freeze delay
+    public float raiseItemDelay = 0.5f;
 
     [Header("Transitions")]
     public VectorValue transitionPosition;

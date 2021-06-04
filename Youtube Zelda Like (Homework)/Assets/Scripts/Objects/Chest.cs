@@ -13,6 +13,9 @@ public class Chest : Dialogue
     [Header("Player Inventory")]
     public Inventory playerInventory;
 
+    [Header("Coroutines")]
+    public float openDelay = 0.5f;
+
     // private
     private Animator myAnimator;
     private bool isLooted;
@@ -37,31 +40,29 @@ public class Chest : Dialogue
 
     public void Interact()
     {
-        if (!isLooted)
+        if (!isLooted) // Open the Chest
         {
-            OpenChest();
+            playerInventory.currentItem = contents;
+            playerInventory.AddItem(contents);
+            contextSignal.Raise(); // Disable context clue before raising the item
+            isLooted = true;
+            StartCoroutine(OpenCo());
         }
-        else
+        else // Chest has already been opened
         {
-            ChestOpened();
+            contextSignal.Raise();
+            raiseItem.Raise();
+            DisableDialogueBox();
+            playerInventory.currentItem = null;
+            triggerCollider.enabled = false;
         }
     }
 
-    public void OpenChest()
+    private IEnumerator OpenCo()
     {
+        myAnimator.SetBool("isOpen", true);
+        yield return new WaitForSeconds(openDelay);
+        raiseItem.Raise();
         promptDialogue();
-        playerInventory.currentItem = contents;
-        playerInventory.AddItem(contents);
-        contextSignal.Raise();
-        raiseItem.Raise();
-        isLooted = true;
-    }
-
-    public void ChestOpened()
-    {
-        DisableDialogueBox();
-        playerInventory.currentItem = null;
-        raiseItem.Raise();
-        triggerCollider.enabled = false;
     }
 }

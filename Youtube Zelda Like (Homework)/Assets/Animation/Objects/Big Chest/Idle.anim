@@ -22,7 +22,7 @@ AnimationClip:
     - time: 0
       value: {fileID: 1336440320741484319, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Chest Sprite
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -33,7 +33,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 1275816395
       attribute: 0
       script: {fileID: 0}
       typeID: 212

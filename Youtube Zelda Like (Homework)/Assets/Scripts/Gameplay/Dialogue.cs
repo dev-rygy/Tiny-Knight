@@ -53,7 +53,6 @@ public class Dialogue : Interactable
 
     public void DisableDialogueBox()
     {
-        Debug.Log("Disabled");
         dialogueBox.SetActive(false);
         isOn = false;
     }
