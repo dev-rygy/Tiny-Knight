@@ -31,8 +31,7 @@ public class Chest : Dialogue
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && GetPlayerInRange() // These two if statemtns are for preventing context clue bug and dialogue bug with collider
-                ) // Run before Chest is looted
+        if (Input.GetButtonDown("Interact") && GetPlayerInRange()) // These two if statemtns are for preventing context clue bug and dialogue bug with collider
         {
             Interact();
         }
@@ -46,6 +45,7 @@ public class Chest : Dialogue
             playerInventory.AddItem(contents);
             contextSignal.Raise(); // Disable context clue before raising the item
             isLooted = true;
+            raiseItem.Raise();
             StartCoroutine(OpenCo());
         }
         else // Chest has already been opened
@@ -62,7 +62,6 @@ public class Chest : Dialogue
     {
         myAnimator.SetBool("isOpen", true);
         yield return new WaitForSeconds(openDelay);
-        raiseItem.Raise();
         promptDialogue();
     }
 }

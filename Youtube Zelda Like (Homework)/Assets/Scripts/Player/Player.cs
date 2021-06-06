@@ -113,22 +113,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void RaiseItem()
-    {
-        if (currentState != PlayerState.interact)
-        {
-            myAnimator.SetBool("isRaisingItem", true);
-            currentState = PlayerState.interact;
-            receivedItemSprite.sprite = playerInventory.currentItem.itemSprite;
-        }
-        else
-        {
-            myAnimator.SetBool("isRaisingItem", false);
-            currentState = PlayerState.idle;
-            receivedItemSprite.sprite = null;
-        }
-    }
-
     private void Attack() // Runs attack Co if Player presses attack button
     {
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack
@@ -162,6 +146,12 @@ public class Player : MonoBehaviour
         invulnerable = true;
     }
 
+    public void RaiseItem()
+    {
+        myRigidbody2D.velocity = Vector2.zero;
+        StartCoroutine(RaiseCo());
+    }
+
     public void Transition()
     {
         StartCoroutine(TransitionCo());
@@ -189,6 +179,23 @@ public class Player : MonoBehaviour
         myAnimator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(attackDelay);
         ChangeState(PlayerState.idle);
+    }
+
+    private IEnumerator RaiseCo()
+    {
+        if (currentState != PlayerState.interact)
+        {
+            currentState = PlayerState.interact;
+            yield return new WaitForSeconds(raiseItemDelay);
+            myAnimator.SetBool("isRaisingItem", true);
+            receivedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+        }
+        else
+        {
+            myAnimator.SetBool("isRaisingItem", false);
+            currentState = PlayerState.idle;
+            receivedItemSprite.sprite = null;
+        }
     }
 
     private IEnumerator TransitionCo() // Player TransitionCo
