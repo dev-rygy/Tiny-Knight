@@ -5,6 +5,7 @@ using UnityEngine;
 public class PatrolLog : Log
 {
     [Header("Pathing")]
+    public bool reversePathing = false; // Instead of the currentPoint resetting at the end of the path, the currentPoint will reverse order till the first
     public Transform[] path; // Multiple Transforms in an array, the Log will move from one Transform to the next respectively
     public int currentPoint; // an int to track the point in the path array
     public float roundingDistance = 0.1f; // The distance that the Log needs to be from the currentPoint's position to go to the next point
