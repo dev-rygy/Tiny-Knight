@@ -6,16 +6,18 @@ public class Log : Enemy
 {
     [Header("Movement")]
     public Transform target;
-    public float chaseRadius;
-    public float attackRadius;
+    public float chaseRadius = 5f;
+    public float attackRadius = 0.5f;
     public Transform homePosition;
 
     [Header("Coroutines")]
     public float wakeUpdelay = 0.7f;
 
+    // public cache
+    [HideInInspector] public Rigidbody2D myRidgidBody; // made public for PatrolLog
+    [HideInInspector] public Animator myAnimator; // made public for PatrolLog
     // private cache
-    private Rigidbody2D myRidgidBody;
-    private Animator myAnimator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class Log : Enemy
         myRidgidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform; // plug in the player's position in the world
+        myAnimator.SetBool("isAwake", true);
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class Log : Enemy
         CheckDistance();
     }
 
-    void CheckDistance() // Wake up / move / fall asleep
+    public virtual void CheckDistance() // Wake up / move / fall asleep; made virtual so that PatrolLog can override with it's own CheckDistance
     {
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius // Check if the target's distance is close enough
                 && Vector2.Distance(target.position, transform.position) > attackRadius)
@@ -48,7 +51,7 @@ public class Log : Enemy
         }
     }
 
-    private void WakeUp() // Wake up if sleeping
+    public void WakeUp() // Wake up if sleeping
     {
             StartCoroutine(WakeUpCo());
     }
@@ -65,7 +68,7 @@ public class Log : Enemy
         }
     }
 
-    private void ChangeAnimDirection(Vector2 direction) // Change the direction of moveX and moveY
+    public void ChangeAnimDirection(Vector2 direction) // Change the direction of moveX and moveY
     {
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {

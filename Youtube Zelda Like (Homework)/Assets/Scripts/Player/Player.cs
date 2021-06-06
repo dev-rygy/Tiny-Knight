@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
         ChangeState(PlayerState.idle);
     }
 
-    private IEnumerator RaiseCo()
+    private IEnumerator RaiseCo() // Player RaiseCo for raising an item above Player's head
     {
         if (currentState != PlayerState.interact)
         {
