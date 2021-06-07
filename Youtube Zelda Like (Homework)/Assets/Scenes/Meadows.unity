@@ -20485,6 +20485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4333629623000269158, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
+    - {fileID: 857939333, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
 --- !u!1 &108996492
 GameObject:
