@@ -5,10 +5,13 @@ using UnityEngine;
 public class PatrolLog : Log
 {
     [Header("Pathing")]
-    public bool reversePathing = false; // Instead of the currentPoint resetting at the end of the path, the currentPoint will reverse order till the first
     public Transform[] path; // Multiple Transforms in an array, the Log will move from one Transform to the next respectively
+    public bool reversePathing = false; // Instead of the currentPoint resetting at the end of the path, the currentPoint will reverse order till the first
     public int currentPoint; // an int to track the point in the path array
     public float roundingDistance = 0.1f; // The distance that the Log needs to be from the currentPoint's position to go to the next point
+
+    // private
+    private bool reverse = false;
 
     void Start()
     {
@@ -55,19 +58,36 @@ public class PatrolLog : Log
         }
         else
         {
-            ChangeGoal();
+            if (reversePathing)
+                ReversePathing();
+            else
+                ChangeGoal();
         }
     }
 
     private void ChangeGoal() // Change the Log's current goal to the next
     {
         if (currentPoint == path.Length - 1) // If currentPoint == end of the path then reset the path
-        {
             currentPoint = 0;
-        }
         else // increment point and go to next
+            currentPoint++;
+    }
+
+    private void ReversePathing() // Reverses the pathing of the enemy instead of restarting
+    {
+        if (currentPoint == path.Length - 1)
         {
+            reverse = true;
+            currentPoint--;
+        }
+        else if (currentPoint == 0)
+        {
+            reverse = false;
             currentPoint++;
         }
+        else if (reverse)
+            currentPoint--;
+        else
+            currentPoint++;
     }
 }

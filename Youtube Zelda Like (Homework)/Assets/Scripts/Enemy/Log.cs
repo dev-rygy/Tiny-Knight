@@ -8,7 +8,7 @@ public class Log : Enemy
     public Transform target;
     public float chaseRadius = 5f;
     public float attackRadius = 0.5f;
-    public Transform homePosition;
+    public Vector2 homePosition;
 
     [Header("Coroutines")]
     public float wakeUpdelay = 0.7f;
@@ -16,8 +16,8 @@ public class Log : Enemy
     // public cache
     [HideInInspector] public Rigidbody2D myRidgidBody; // made public for PatrolLog
     [HideInInspector] public Animator myAnimator; // made public for PatrolLog
-    // private cache
-
+    // private cache/variables
+    private float sleepRounding = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,8 @@ public class Log : Enemy
         myRidgidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform; // plug in the player's position in the world
-        myAnimator.SetBool("isAwake", true);
+        myAnimator.SetBool("isAwake", false);
+        homePosition = transform.position;
     }
 
     // Update is called once per frame
@@ -42,18 +43,39 @@ public class Log : Enemy
         {
             if (currentState == EnemyState.sleeping)
                 WakeUp(); // Wake up the Log
+
             MoveToTarget(); // Move towards the target
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)// Target out of range = fall back asleep
         {
-            ChangeState(EnemyState.sleeping);
-            myAnimator.SetBool("isAwake", false);
+            if (Vector2.Distance(transform.position, homePosition) <= sleepRounding
+                    && currentState == EnemyState.walk)
+                GoToSleep();
+            if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping
+                && myAnimator.GetBool("isAwake"))
+            {
+                MoveToHomePosition();
+            }
         }
     }
 
     public void WakeUp() // Wake up if sleeping
     {
             StartCoroutine(WakeUpCo());
+    }
+
+    public void GoToSleep()
+    {
+        ChangeState(EnemyState.sleeping);
+        myAnimator.SetBool("isAwake", false);
+    }
+
+    public void MoveToHomePosition() // The log will to back to it's home position and sleep when the player is out of range
+    {
+            ChangeState(EnemyState.walk);
+            Vector2 temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.deltaTime);
+            ChangeAnimDirection(temp - Vector3Extension.AsVector2(transform.position));
+            myRidgidBody.MovePosition(temp);
     }
 
     private void MoveToTarget() // Move towards the target if not staggered or sleeping
