@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RoomTransition : MonoBehaviour
 {
-    [Header ("Player & Camera")]
+    [Header("Room Transition & Camera")]
     public Vector3 playerChange; // The players change in position after a room transition
     public GameObject transitionCam; // The Camera to be switched to after a room transition
 
@@ -35,7 +35,7 @@ public class RoomTransition : MonoBehaviour
         }
     }
 
-    private IEnumerator AreaTitleCo() // Coroutine for title card
+    public IEnumerator AreaTitleCo() // Coroutine for title card
     {
         yield return new WaitForSeconds(spawnDelay); // wait x amount of seconds for title card to appear
         text.SetActive(true);

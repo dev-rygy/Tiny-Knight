@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    [Header("Scene Transition")]
     public string sceneToLoad; //The next scene to load after the trigger
     public Vector2 playerPosition; // The player's position in the next scene after load
     public VectorValue playerStorage; // Scriptable object PlayerPosition
