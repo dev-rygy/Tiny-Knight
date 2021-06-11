@@ -24924,6 +24924,7 @@ GameObject:
   - component: {fileID: 610889614}
   - component: {fileID: 610889613}
   - component: {fileID: 610889612}
+  - component: {fileID: 610889615}
   m_Layer: 0
   m_Name: Transition Collider 1 - 2
   m_TagString: Untagged
@@ -24945,12 +24946,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: 3, z: 0}
   transitionCam: {fileID: 1670410520}
-  needText: 1
-  placeName: LUCKY LAKE
-  text: {fileID: 1561273911}
-  placeText: {fileID: 1561273914}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &610889613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24991,6 +24986,23 @@ Transform:
   m_Father: {fileID: 1277044243}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610889615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610889611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbef160d874aa04f8c5652a2727e83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeName: Lucky Lake
+  text: {fileID: 1561273911}
+  placeText: {fileID: 1561273914}
+  spawnDelay: 2.6
+  lifeTime: 4
 --- !u!1001 &654763781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25505,6 +25517,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4333629623000269153, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
   m_PrefabInstance: {fileID: 4333629622146669795}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &879543795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879543797}
+  - component: {fileID: 879543798}
+  - component: {fileID: 879543796}
+  m_Layer: 0
+  m_Name: SceneStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &879543796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879543795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbef160d874aa04f8c5652a2727e83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeName: Meadows
+  text: {fileID: 1561273911}
+  placeText: {fileID: 1561273914}
+  spawnDelay: 2
+  lifeTime: 4
+--- !u!4 &879543797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879543795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.565309, y: 12.3023615, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879543798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879543795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97975e16549df8643951f645760995f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTitleAtSceneStart: 1
+  haltPlayerMovementAtSceneStart: 0
 --- !u!1 &901439481
 GameObject:
   m_ObjectHideFlags: 0
@@ -25785,12 +25860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: -3, z: 0}
   transitionCam: {fileID: 1691079953}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.7
-  lifeTime: 4
 --- !u!61 &1027796710
 BoxCollider2D:
   m_ObjectHideFlags: 0

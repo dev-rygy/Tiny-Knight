@@ -479,6 +479,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &420135983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2324220308196978718, guid: e56ee7efed829ad4bba91cca7bcfc00d, type: 3}
+  m_PrefabInstance: {fileID: 275028075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420135986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2324220308196978707, guid: e56ee7efed829ad4bba91cca7bcfc00d, type: 3}
+  m_PrefabInstance: {fileID: 275028075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420135983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &479417697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,12 +662,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: 5.7, z: 0}
   transitionCam: {fileID: 34739509}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &558833243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -905,12 +915,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 4, y: -0.2, z: 0}
   transitionCam: {fileID: 767808693}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &818041267
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1696,12 +1700,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: -4, y: -0.2, z: 0}
   transitionCam: {fileID: 1073704735}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &1248050067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1728,6 +1726,69 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.972055, y: 0.38256168}
   m_EdgeRadius: 0
+--- !u!1 &1317563445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317563448}
+  - component: {fileID: 1317563447}
+  - component: {fileID: 1317563446}
+  m_Layer: 0
+  m_Name: SceneStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1317563446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317563445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbef160d874aa04f8c5652a2727e83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeName: Eerie Caves
+  text: {fileID: 420135983}
+  placeText: {fileID: 420135986}
+  spawnDelay: 2
+  lifeTime: 4
+--- !u!114 &1317563447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317563445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97975e16549df8643951f645760995f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTitleAtSceneStart: 1
+  haltPlayerMovementAtSceneStart: 0
+--- !u!4 &1317563448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317563445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3594794, y: -0.5209768, z: -0.33569336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334852762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,12 +1835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: 5.3, z: 0}
   transitionCam: {fileID: 1962919598}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &1334852765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2029,12 +2084,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: 5.7, z: 0}
   transitionCam: {fileID: 767808693}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &1651951715
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2107,12 +2156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: -5.7, z: 0}
   transitionCam: {fileID: 1073704735}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &1804336373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2275,12 +2318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: -5.7, z: 0}
   transitionCam: {fileID: 767808693}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &1874883828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2569,12 +2606,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: -5.7, z: 0}
   transitionCam: {fileID: 91856658}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &2056188124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2647,12 +2678,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: -5.5, z: 0}
   transitionCam: {fileID: 9030776861269943296}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!61 &2095221899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14011,12 +14036,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChange: {x: 0, y: 5.5, z: 0}
   transitionCam: {fileID: 1073704735}
-  needText: 0
-  placeName: 
-  text: {fileID: 0}
-  placeText: {fileID: 0}
-  spawnDelay: 2.6
-  lifeTime: 4
 --- !u!4 &3515367706876088031
 Transform:
   m_ObjectHideFlags: 0
