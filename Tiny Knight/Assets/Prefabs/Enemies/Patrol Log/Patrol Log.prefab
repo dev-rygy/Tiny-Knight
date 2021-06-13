@@ -218,16 +218,17 @@ MonoBehaviour:
     variable: {fileID: 11400000, guid: c33371bec7daf0f47bcd4014aa382e94, type: 2}
   moveSpeed: 2
   enemyName: Patrol Log
+  deathEffect: {fileID: 2293020700800932408, guid: 730eed63621eee34a92be24e37b0d95d, type: 3}
   target: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
   chaseRadius: 5
   attackRadius: 0.5
-  homePosition: {fileID: 0}
+  homePosition: {x: 0, y: 0}
   wakeUpdelay: 0.7
   myRidgidBody: {fileID: 0}
   myAnimator: {fileID: 0}
-  reversePathing: 0
   path:
   - {fileID: 0}
   - {fileID: 0}
+  reversePathing: 0
   currentPoint: 0
   roundingDistance: 0.2

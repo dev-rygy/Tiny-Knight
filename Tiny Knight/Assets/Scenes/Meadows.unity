@@ -25498,6 +25498,7 @@ MonoBehaviour:
     variable: {fileID: 11400000, guid: c33371bec7daf0f47bcd4014aa382e94, type: 2}
   moveSpeed: 2
   enemyName: Patrol Log
+  deathEffect: {fileID: 0}
   target: {fileID: 136029427}
   chaseRadius: 5
   attackRadius: 0.5

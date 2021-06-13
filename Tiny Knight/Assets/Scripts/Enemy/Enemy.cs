@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Properties")]
     public string enemyName;
+    public GameObject deathEffect;
+
 
     private void Awake()
     {
@@ -57,10 +59,20 @@ public class Enemy : MonoBehaviour
         if (health <= 0f) // kill off the Enemy once health reaches 0
         {
             ChangeState(EnemyState.dead);
+            DeathEffect();
             this.gameObject.SetActive(false); // will be put into a coroutine later
             Debug.Log(enemyName + " has died.");
         }
         invulnerable = true;
+    }
+
+    private void DeathEffect()
+    {
+        if (deathEffect != null)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1f); // Destroy Death Effect Game Object after 1 second
+        }
     }
 
     private IEnumerator KnockCo(Rigidbody2D myRigidbody2D, float knocktime, float recoverDelay, Vector2 knockDirection) // Enemy KnockCo
