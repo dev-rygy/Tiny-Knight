@@ -16,6 +16,9 @@ public class HitBoxBehavior : MonoBehaviour
     [Header("Damage")]
     public float damage = 0;
 
+    [Header("Debug")]
+    public bool debugModeEnabler = false;
+
     private void OnTriggerEnter2D(Collider2D targetCollider) // When the target's collider is hit by the attacker's collider
     {
         BreakObject(targetCollider);
@@ -44,7 +47,7 @@ public class HitBoxBehavior : MonoBehaviour
                    && targetRigidbody2D.GetComponent<Enemy>().currentState != EnemyState.stagger
                    && targetRigidbody2D.GetComponent<Enemy>().currentState != EnemyState.dead) // Enemy collision
             {
-                Debug.Log("Player did " + damage + " damage with " + hitboxName + "!");
+                DebugMode(1);
                 targetRigidbody2D.GetComponent<Enemy>().Hit(targetRigidbody2D, knocktime, recoverDelay, damage, KnockDirection(targetOffset)); // Start KnockCo and take dmg
             }
 
@@ -52,7 +55,7 @@ public class HitBoxBehavior : MonoBehaviour
                     && targetRigidbody2D.GetComponent<Player>().currentState != PlayerState.stagger
                     && targetRigidbody2D.GetComponent<Player>().currentState != PlayerState.dead) // Player collision
             {
-                Debug.Log(this.GetComponent<Enemy>().enemyName + " did " + damage + " damage with " + hitboxName + "!");
+                DebugMode(2);
                 targetRigidbody2D.AddForce(KnockDirection(targetOffset), ForceMode2D.Impulse); // Force and direction applied to collision
                 targetRigidbody2D.GetComponent<Player>().Hit(knocktime, recoverDelay, damage); // Start KnockCo and take dmg
             }
@@ -85,5 +88,21 @@ public class HitBoxBehavior : MonoBehaviour
         }
         targetOffset = targetOffset * thrust; // Implement thrust amt.
         return targetOffset;
+    }
+
+    private void DebugMode(int debugCode)
+    {
+        if (debugModeEnabler)
+        {
+            switch (debugCode)
+            {
+                case 1:
+                    Debug.Log("Player did " + damage + " damage with " + hitboxName + "!");
+                    break;
+                case 2:
+                    Debug.Log(this.GetComponent<Enemy>().enemyName + " did " + damage + " damage with " + hitboxName + "!");
+                    break;
+            }
+        }
     }
 }

@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
 
+    [Header("Debug")]
+    public bool debugModeEnabler = false;
+
     // Private Chached References
     private Rigidbody2D myRigidbody2D; // cached Rigidbody2D reference
     private Vector2 changeInVelocity; // current velocity direction and magnitude on the player
@@ -141,7 +144,7 @@ public class Player : MonoBehaviour
         {
             ChangeState(PlayerState.dead);
             this.gameObject.SetActive(false); // will be put into a coroutine later
-            Debug.Log("Player has died.");
+            DebugMode(1);
         }
         invulnerable = true;
     }
@@ -205,5 +208,18 @@ public class Player : MonoBehaviour
         myRigidbody2D.velocity = Vector2.zero;
         yield return new WaitForSeconds(transitionHalt);
         ChangeState(PlayerState.idle);
+    }
+
+    private void DebugMode(int debugCode)
+    {
+        if (debugModeEnabler)
+        {
+            switch (debugCode)
+            {
+                case 1:
+                    Debug.Log("Player has died.");
+                    break;
+            }
+        }
     }
 }

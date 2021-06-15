@@ -25499,6 +25499,7 @@ MonoBehaviour:
   moveSpeed: 2
   enemyName: Patrol Log
   deathEffect: {fileID: 0}
+  debugModeEnabler: 0
   target: {fileID: 136029427}
   chaseRadius: 5
   attackRadius: 0.5
@@ -40037,6 +40038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7595285882626496554, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: debugModeEnabler
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -40081,9 +40086,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7595285882783090394, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: debugModeEnabler
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7595285882783090395, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595285883030811239, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: debugModeEnabler
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595285883076049311, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: debugModeEnabler
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595285883496204894, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: debugModeEnabler
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}

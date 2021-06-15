@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public GameObject deathEffect;
 
+    [Header("Debug")]
+    public bool debugModeEnabler = false;
 
     private void Awake()
     {
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
             ChangeState(EnemyState.dead);
             DeathEffect();
             this.gameObject.SetActive(false); // will be put into a coroutine later
-            Debug.Log(enemyName + " has died.");
+            DebugMode(1);
         }
         invulnerable = true;
     }
@@ -87,6 +89,19 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(recoverDelay);
             invulnerable = false;
             currentState = EnemyState.idle;
+        }
+    }
+
+    private void DebugMode(int debugCode)
+    {
+        if (debugModeEnabler)
+        {
+            switch (debugCode)
+            {
+                case 1:
+                    Debug.Log(enemyName + " has died.");
+                    break;
+            }
         }
     }
 }
