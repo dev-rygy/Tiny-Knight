@@ -8,7 +8,8 @@ public class Inventory : ScriptableObject
     public Item currentItem;
     public List<Item> itemList = new List<Item>();
     public int numberOfKeys;
-    
+    public int numberOfCoins;
+
     public void AddItem(Item item)
     {
         if (item.isKey)

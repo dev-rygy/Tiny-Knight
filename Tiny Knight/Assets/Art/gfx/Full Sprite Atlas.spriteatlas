@@ -244,6 +244,8 @@ SpriteAtlas:
   - {fileID: -7903152263914619656, guid: 3185cef0700a8964b970c632d5017fc9, type: 3}
   - {fileID: -4978113134295867063, guid: 3185cef0700a8964b970c632d5017fc9, type: 3}
   - {fileID: 47775018648080561, guid: 3185cef0700a8964b970c632d5017fc9, type: 3}
+  - {fileID: -1986772863260763996, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
+  - {fileID: 5760800594879907098, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
   - {fileID: -5331891938937075238, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
   - {fileID: -8086995983514025172, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
   - {fileID: 4568664149699701401, guid: ec1209517c505b645b6aa371aa9e0e0f, type: 3}
@@ -1985,6 +1987,8 @@ SpriteAtlas:
   - cave_110
   - cave_108
   - cave_109
+  - objects_71
+  - objects_70
   - objects_75
   - objects_76
   - objects_79
