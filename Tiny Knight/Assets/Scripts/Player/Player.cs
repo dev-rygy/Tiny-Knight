@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     public FloatReference currentHealth; // currentHealth Scriptable Object Ref
-    public SignalSender playerHealthSignal; // new SignalSender of type Player Health
     private float health; // private variable for Debug Mode
     public float walkSpeed = 5f; // Player walk speed
 
@@ -36,6 +35,10 @@ public class Player : MonoBehaviour
     [Header("Inventory")]
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
+
+    [Header("Signals")]
+    public SignalSender playerHealthSignal; // new SignalSender of type Player Health
+    public SignalSender cameraShakeSignal;
 
     [Header("Debug")]
     public bool debugModeEnabler = false;
@@ -139,6 +142,7 @@ public class Player : MonoBehaviour
         {
             currentHealth.SubtractRuntimeValue(damage); // subtract the currentHealth from the scriptable object
             playerHealthSignal.Raise(); // Raise all listeners of playerHealthSignal
+            cameraShakeSignal.Raise(); // Raise all listeners of playerShake
         }
         if (currentHealth.GetRuntimeValue() <= 0f) // kill off the Player once currentHealth reaches 0
         {

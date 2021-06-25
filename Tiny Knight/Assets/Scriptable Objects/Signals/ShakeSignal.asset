@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f20ae41fc450b84d879cce2a9355361, type: 3}
-  m_Name: playerInventory
+  m_Script: {fileID: 11500000, guid: e901c50463b10284ca9f39bfb80842eb, type: 3}
+  m_Name: ShakeSignal
   m_EditorClassIdentifier: 
-  currentItem: {fileID: 0}
-  itemList: []
-  numberOfKeys: 1
-  numberOfCoins: 5
