@@ -15,4 +15,4 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   itemList: []
   numberOfKeys: 1
-  numberOfCoins: 5
+  numberOfCoins: 3

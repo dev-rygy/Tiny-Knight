@@ -24902,7 +24902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21161477, y: -0.20910001, z: -10}
+  m_LocalPosition: {x: -0.21152367, y: -0.20910001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 934825053}
@@ -25807,6 +25807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934825053}
   - component: {fileID: 934825054}
+  - component: {fileID: 934825055}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -25845,6 +25846,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingCam: {fileID: 1691079953}
   currentPlayerCam: {fileID: 0}
+  time: 1
+  intensity: 2
+--- !u!114 &934825055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934825052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfc9288caf06874389420850cfba5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 76641eb69694237438ae815a97a939a5, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 934825054}
+        m_TargetAssemblyTypeName: Cameras, Assembly-CSharp
+        m_MethodName: ShakeCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &941527957
 GameObject:
   m_ObjectHideFlags: 0
@@ -39537,7 +39568,6 @@ GameObject:
   - component: {fileID: 1691079954}
   - component: {fileID: 1691079955}
   - component: {fileID: 1691079956}
-  - component: {fileID: 1691079957}
   m_Layer: 0
   m_Name: Player vcam1
   m_TagString: Untagged
@@ -39553,7 +39583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691079953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2061094, y: -1.9753926, z: -10}
+  m_LocalPosition: {x: -0.20602691, y: -1.9753926, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328833046}
@@ -39589,7 +39619,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.334004, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -39613,34 +39643,6 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 901439483}
   m_Damping: 0.5
   m_MaxWindowSize: -1
---- !u!114 &1691079957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691079953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bfc9288caf06874389420850cfba5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 76641eb69694237438ae815a97a939a5, type: 2}
-  signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1692766689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2852639759187560529, guid: 862c748d02ab26946a6e39956534fb6a, type: 3}
@@ -40540,6 +40542,10 @@ PrefabInstance:
       propertyPath: debugModeEnabler
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7595285882783090394, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
+      propertyPath: cameraShakeSignal
+      value: 
+      objectReference: {fileID: 11400000, guid: 76641eb69694237438ae815a97a939a5, type: 2}
     - target: {fileID: 7595285882783090395, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
       propertyPath: m_Name
       value: Player
