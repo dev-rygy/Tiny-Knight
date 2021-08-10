@@ -24673,7 +24673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376235781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.582031, y: 28.460001, z: 12.741382}
+  m_LocalPosition: {x: -6.59, y: 4.46, z: 12.741382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2063011075}
@@ -24701,7 +24701,7 @@ MonoBehaviour:
   contents: {fileID: 11400000, guid: d5448da609f9aa84383a22236e7f6c6d, type: 2}
   raiseItem: {fileID: 11400000, guid: 5064cc4517e9fc34f92fbb41f0d0a06e, type: 2}
   triggerCollider: {fileID: 376235787}
-  storedState: {fileID: 0}
+  storedState: {fileID: 11400000, guid: 755bbe022e11cfa4bb95c9e52d2fc097, type: 2}
   playerInventory: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
   openDelay: 0.5
 --- !u!61 &376235786
@@ -24903,7 +24903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21161477, y: -0.20910001, z: -10}
+  m_LocalPosition: {x: -0.1651905, y: -0.20901, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 934825053}
@@ -39584,7 +39584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691079953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2061094, y: -1.9753926, z: -10}
+  m_LocalPosition: {x: -0.15580857, y: -1.9753926, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328833046}
@@ -39620,7 +39620,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7425569, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
