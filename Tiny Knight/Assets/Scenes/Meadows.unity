@@ -24640,9 +24640,9 @@ GameObject:
   - component: {fileID: 376235786}
   - component: {fileID: 376235785}
   m_Layer: 0
-  m_Name: Large Chest
+  m_Name: Large Chest 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24701,6 +24701,7 @@ MonoBehaviour:
   contents: {fileID: 11400000, guid: d5448da609f9aa84383a22236e7f6c6d, type: 2}
   raiseItem: {fileID: 11400000, guid: 5064cc4517e9fc34f92fbb41f0d0a06e, type: 2}
   triggerCollider: {fileID: 376235787}
+  storedState: {fileID: 0}
   playerInventory: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
   openDelay: 0.5
 --- !u!61 &376235786
@@ -24902,7 +24903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21152367, y: -0.20910001, z: -10}
+  m_LocalPosition: {x: -0.21161477, y: -0.20910001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 934825053}
@@ -39583,7 +39584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691079953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.20602691, y: -1.9753926, z: -10}
+  m_LocalPosition: {x: -0.2061094, y: -1.9753926, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1328833046}
@@ -39619,7 +39620,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.334004, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

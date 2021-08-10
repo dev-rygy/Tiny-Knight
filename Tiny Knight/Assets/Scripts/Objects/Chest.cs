@@ -9,6 +9,7 @@ public class Chest : Dialogue
     public Item contents;
     public SignalSender raiseItem;
     public Collider2D triggerCollider;
+    public BoolValue storedState; // Scriptable Object that holds a bool value
 
     [Header("Player Inventory")]
     public Inventory playerInventory;
@@ -26,14 +27,23 @@ public class Chest : Dialogue
         myAnimator = GetComponent<Animator>();
         dialogue = contents.itemDescription;
         ChestSwitch();
+        isLooted = storedState.runtimeValue;
+        if(storedState.runtimeValue)
+        {
+            myAnimator.SetBool("isOpenStartOfScene", true);
+            triggerCollider.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && GetPlayerInRange()) // These two if statemtns are for preventing context clue bug and dialogue bug with collider
+        if (!storedState.runtimeValue)
         {
-            Interact();
+            if (Input.GetButtonDown("Interact") && GetPlayerInRange()) // These two if statemtns are for preventing context clue bug and dialogue bug with collider
+            {
+                Interact();
+            }
         }
     }
 
@@ -55,6 +65,7 @@ public class Chest : Dialogue
             DisableDialogueBox();
             playerInventory.currentItem = null;
             triggerCollider.enabled = false;
+            storedState.runtimeValue = true;
         }
     }
 

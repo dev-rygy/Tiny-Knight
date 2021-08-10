@@ -53,7 +53,6 @@ public class Cameras : MonoBehaviour
 
     public void ShakeCamera()
     {
-        Debug.Log("Here");
         CinemachineBasicMultiChannelPerlin cinemachineBasicPerlin =
             vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>(); // set cinemachingBasicPerlin to the vCam's perlin
         cinemachineBasicPerlin.m_AmplitudeGain = intensity; // set the intensity of the screen shake
