@@ -20488,6 +20488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Log (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4333629623000269212, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4333629623000269158, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
     - {fileID: 857939333, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
@@ -24533,6 +24537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7694197838409091137, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7694197838409091256, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -25020,6 +25028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7694197838409091137, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7694197838409091256, guid: 65ec8b2ded794ff43ae5b862c3d6c5a7, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -25505,14 +25517,10 @@ MonoBehaviour:
   moveSpeed: 2
   enemyName: Patrol Log
   deathEffect: {fileID: 0}
-  debugModeEnabler: 0
   target: {fileID: 136029427}
   chaseRadius: 5
   attackRadius: 0.5
   homePosition: {x: 0, y: 0}
-  wakeUpdelay: 0.7
-  myRidgidBody: {fileID: 0}
-  myAnimator: {fileID: 0}
   path:
   - {fileID: 289839728}
   - {fileID: 502081803}
@@ -25520,6 +25528,14 @@ MonoBehaviour:
   reversePathing: 1
   currentPoint: 0
   roundingDistance: 0.2
+  wakeUpdelay: 0.7
+  debugModeEnabler: 0
+  myRidgidBody: {fileID: 0}
+  myAnimator: {fileID: 0}
+  SleepingEnemy: 0
+  PersuingEnemy: 0
+  PathingEnemy: 0
+  RandomPathingEnemy: 0
 --- !u!4 &857939330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4333629623000269153, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
@@ -25572,7 +25588,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &879543798
 MonoBehaviour:
@@ -25847,8 +25863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingCam: {fileID: 1691079953}
   currentPlayerCam: {fileID: 0}
-  time: 1
-  intensity: 2
+  time: 0.2
+  intensity: 5
 --- !u!114 &934825055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25909,6 +25925,7 @@ Transform:
   - {fileID: 608638102}
   - {fileID: 857939330}
   - {fileID: 749230805}
+  - {fileID: 1621838026}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39407,7 +39424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549198736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.81, y: -12.17, z: 7.2588067}
+  m_LocalPosition: {x: 9.81, y: -6.73, z: 7.2588067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1331674828}
@@ -39453,13 +39470,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621838025}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.118722, y: -6.190609, z: 2.6528041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1519609942}
   - {fileID: 1331674828}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 941527958}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1670410520
 GameObject:
@@ -39717,7 +39734,7 @@ Transform:
   - {fileID: 1324040691}
   - {fileID: 68092350}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063011074
 GameObject:
@@ -40328,6 +40345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Log
       objectReference: {fileID: 0}
+    - target: {fileID: 4333629623000269212, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa10f1335a51f714eb406145ac15b053, type: 3}
 --- !u!1001 &4577059092574555152
@@ -40343,7 +40364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4577059093046232171, guid: 3fb956f82ce2e044b9720df32ad3b206, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4577059093046232171, guid: 3fb956f82ce2e044b9720df32ad3b206, type: 3}
       propertyPath: m_LocalPosition.x
