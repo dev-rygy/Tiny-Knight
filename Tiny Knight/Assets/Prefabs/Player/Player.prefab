@@ -271,6 +271,7 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
+  debugModeEnabler: 0
 --- !u!1 &7595285882783090395
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +284,8 @@ GameObject:
   - component: {fileID: 7595285882783090375}
   - component: {fileID: 7595285882783090369}
   - component: {fileID: 7595285882783090372}
-  - component: {fileID: 7595285882783090368}
   - component: {fileID: 7595285882783090373}
+  - component: {fileID: 7595285882783090368}
   - component: {fileID: 7595285882783090394}
   - component: {fileID: 868304061}
   - component: {fileID: 868304060}
@@ -407,32 +408,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7595285882783090368
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595285882783090395}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0028215945, y: -0.09875393}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7460615, y: 1.0576062}
-  m_EdgeRadius: 0
 --- !u!61 &7595285882783090373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -459,6 +434,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5000956, y: 0.30850554}
   m_EdgeRadius: 0
+--- !u!61 &7595285882783090368
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7595285882783090395}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0028215945, y: -0.09875393}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7460615, y: 1.0576062}
+  m_EdgeRadius: 0
 --- !u!114 &7595285882783090394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +477,6 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 884d886df6e38e04ea7511005c3d44b9, type: 2}
-  playerHealthSignal: {fileID: 11400000, guid: 3fc4ea390f950964396b185fba3444c5, type: 2}
   walkSpeed: 5
   attackDelay: 0.25
   transitionHalt: 2.5
@@ -484,6 +484,9 @@ MonoBehaviour:
   transitionPosition: {fileID: 11400000, guid: d68fa31ec8e681d4780ef87b4020c9d3, type: 2}
   playerInventory: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
   receivedItemSprite: {fileID: 398701885}
+  playerHealthSignal: {fileID: 11400000, guid: 3fc4ea390f950964396b185fba3444c5, type: 2}
+  cameraShakeSignal: {fileID: 0}
+  debugModeEnabler: 0
 --- !u!114 &868304061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +605,7 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
+  debugModeEnabler: 0
 --- !u!1 &7595285883076049298
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +682,7 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
+  debugModeEnabler: 0
 --- !u!1 &7595285883496204893
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,3 +759,4 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
+  debugModeEnabler: 0

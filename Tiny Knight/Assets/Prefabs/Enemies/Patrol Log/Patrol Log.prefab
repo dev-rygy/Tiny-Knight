@@ -199,6 +199,7 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0
   damage: 1
+  debugModeEnabler: 0
 --- !u!114 &857939333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   moveSpeed: 2
   enemyName: Patrol Log
   deathEffect: {fileID: 2293020700800932408, guid: 730eed63621eee34a92be24e37b0d95d, type: 3}
+  debugModeEnabler: 0
   target: {fileID: 7595285882783090374, guid: 0fe0a69da940cf543929045402a3c15b, type: 3}
   chaseRadius: 5
   attackRadius: 0.5

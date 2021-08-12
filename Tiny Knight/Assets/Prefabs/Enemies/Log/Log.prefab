@@ -199,6 +199,7 @@ MonoBehaviour:
   knocktime: 0.2
   recoverDelay: 0
   damage: 1
+  debugModeEnabler: 0
 --- !u!114 &7694197838409091259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   moveSpeed: 2
   enemyName: Log
   deathEffect: {fileID: 2293020700800932408, guid: 730eed63621eee34a92be24e37b0d95d, type: 3}
+  debugModeEnabler: 0
   target: {fileID: 0}
   chaseRadius: 5
   attackRadius: 0.5
