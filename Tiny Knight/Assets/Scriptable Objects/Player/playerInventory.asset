@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItem: {fileID: 0}
   itemList: []
-  numberOfKeys: 2
-  numberOfCoins: 2
+  numberOfKeys: 0
+  numberOfCoins: 4
