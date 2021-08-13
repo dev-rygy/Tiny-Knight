@@ -26,9 +26,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Properties")]
     public string enemyName;
-    public bool PersuingEnemy = false;
-    public bool PathingEnemy = false;
-    public bool SleepingEnemy = false;
 
     [Header("Target and Persue")]
     public Transform target;
@@ -55,10 +52,10 @@ public class Enemy : MonoBehaviour
     // public cache
     [HideInInspector] public Rigidbody2D myRidgidBody; // made public for PatrolLog
     [HideInInspector] public Animator myAnimator; // made public for PatrolLog
+    [HideInInspector] public float sleepRounding = 0.2f;
 
     // private
     private bool reverse = false;
-    private float sleepRounding = 0.2f;
 
     private void Awake()
     {
@@ -107,35 +104,19 @@ public class Enemy : MonoBehaviour
         // Target and Persue
     public virtual bool CheckDistanceOfTarget() // Wake up / move / fall asleep; made virtual so that PatrolLog can override with it's own CheckDistance
     {
+        Debug.Log(Vector2.Distance(target.position, transform.position));
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius // Check if the target's distance is close enough
                 && Vector2.Distance(target.position, transform.position) > attackRadius)
         {
-            if (SleepingEnemy && currentState == EnemyState.sleeping)
-                WakeUp(); // Wake up the Log
-            if (PersuingEnemy)
-            {
-                MoveToTarget(); // Move towards the target
-            }
             return true;
         }
-        else if (Vector2.Distance(target.position, transform.position) > chaseRadius)// Target out of range = fall back asleep
+        else
         {
-            Debug.Log("out");
-            if (PathingEnemy && Vector2.Distance(target.position, transform.position) > chaseRadius) // Target out of range = move to next pathing point
-            {
-                MoveToPoint(); // Move to the currentPoint
-            }
-            else if (SleepingEnemy && Vector2.Distance(transform.position, homePosition) <= sleepRounding
-                   && currentState == EnemyState.walk)
-                GoToSleep();
-            else if (hasHomePosition && currentState != EnemyState.stagger && currentState != EnemyState.sleeping
-                && myAnimator.GetBool("isAwake"))
-                MoveToHomePosition();
             return false;
         }
     }
 
-    private void MoveToTarget() // Move towards the target if not staggered or sleeping
+    public void MoveToTarget() // Move towards the target if not staggered or sleeping
     {
         if (currentState != EnemyState.stagger && currentState != EnemyState.sleeping
                 && myAnimator.GetBool("isAwake"))
@@ -157,7 +138,7 @@ public class Enemy : MonoBehaviour
     }
 
         // Pathing
-    private void MoveToPoint()
+    public void MoveToPoint()
     {
         if (Vector2.Distance(transform.position, path[currentPoint].position) > roundingDistance) // if the difference of the Log and it's next point is greater
         {                                                                                               // than the minimum distance set in rounding distance
@@ -267,7 +248,7 @@ public class Enemy : MonoBehaviour
         {
             ChangeState(EnemyState.stagger);
             myRigidbody2D.AddForce(knockDirection, ForceMode2D.Impulse); // Force and direction applied to collision
-            myRigidbody2D.GetComponent<Log>().isHurt();
+            isHurt();
             yield return new WaitForSeconds(knocktime);
             myRigidbody2D.velocity = Vector2.zero;
             yield return new WaitForSeconds(recoverDelay);

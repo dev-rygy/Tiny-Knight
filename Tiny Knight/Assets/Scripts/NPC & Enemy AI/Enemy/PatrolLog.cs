@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolLog : Log
+public class PatrolLog : Enemy
 {
     void Start()
     {
-        PersuingEnemy = true;
-        PathingEnemy = true;
         currentState = EnemyState.walk;
         myAnimator.SetBool("isAwake", true);
     }
 
+    // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDistanceOfTarget();
+        if (currentState != EnemyState.stagger)
+        {
+            if (CheckDistanceOfTarget() && currentState != EnemyState.stagger)
+            {
+                MoveToTarget();
+            }
+            else
+            {
+                MoveToPoint();
+            }
+        }
     }
 }

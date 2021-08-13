@@ -7,8 +7,6 @@ public class Log : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        PersuingEnemy = true;
-        SleepingEnemy = true;
         currentState = EnemyState.sleeping;
         myAnimator.SetBool("isAwake", false);
     }
@@ -16,6 +14,22 @@ public class Log : Enemy
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDistanceOfTarget();
+        if (currentState != EnemyState.stagger)
+        {
+            if (CheckDistanceOfTarget() && currentState != EnemyState.stagger)
+            {
+                if (currentState == EnemyState.sleeping)
+                    WakeUp();
+                MoveToTarget();
+            }
+            else if (hasHomePosition && Vector2.Distance(transform.position, homePosition) > sleepRounding)
+            {
+                MoveToHomePosition();
+            }
+            else
+            {
+                GoToSleep();
+            }
+        }
     }
 }
