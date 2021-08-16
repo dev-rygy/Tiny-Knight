@@ -15,7 +15,8 @@ public class PatrolLog : Enemy
     {
         if (currentState != EnemyState.stagger)
         {
-            if (CheckDistanceOfTarget() && currentState != EnemyState.stagger)
+            if (CheckIfTargetInBoundary() && CheckDistanceOfTarget() 
+                && currentState != EnemyState.stagger)
             {
                 MoveToTarget();
             }

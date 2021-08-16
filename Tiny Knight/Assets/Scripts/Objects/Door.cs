@@ -18,7 +18,7 @@ public class Door : Interactable
     public Inventory playerInventory;
 
     // private
-    private bool isOpen = false;
+    // private bool isOpen = false;
 
     private void Update()
     {

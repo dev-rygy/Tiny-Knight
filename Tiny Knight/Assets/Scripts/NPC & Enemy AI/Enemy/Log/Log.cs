@@ -16,7 +16,8 @@ public class Log : Enemy
     {
         if (currentState != EnemyState.stagger)
         {
-            if (CheckDistanceOfTarget() && currentState != EnemyState.stagger)
+            if (CheckIfTargetInBoundary() && CheckDistanceOfTarget() && 
+                currentState != EnemyState.stagger)
             {
                 if (currentState == EnemyState.sleeping)
                     WakeUp();

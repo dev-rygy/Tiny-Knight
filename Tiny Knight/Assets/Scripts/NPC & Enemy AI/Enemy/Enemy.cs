@@ -34,6 +34,10 @@ public class Enemy : MonoBehaviour
     public bool hasHomePosition = true;
     public Vector2 homePosition;
 
+    [Header("Bounded Area")]
+    public bool hasBoundary = false;
+    public Collider2D boundaryCollider;
+
     [Header("Pathing")]
     public Transform[] path; // Multiple Transforms in an array, the Log will move from one Transform to the next respectively
     public bool reversePathing = false; // Instead of the currentPoint resetting at the end of the path, the currentPoint will reverse order till the first
@@ -104,7 +108,6 @@ public class Enemy : MonoBehaviour
         // Target and Persue
     public virtual bool CheckDistanceOfTarget() // Wake up / move / fall asleep; made virtual so that PatrolLog can override with it's own CheckDistance
     {
-        Debug.Log(Vector2.Distance(target.position, transform.position));
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius // Check if the target's distance is close enough
                 && Vector2.Distance(target.position, transform.position) > attackRadius)
         {
@@ -126,6 +129,23 @@ public class Enemy : MonoBehaviour
             ChangeAnimDirection(temp - Vector3Extension.AsVector2(transform.position));
             myRidgidBody.MovePosition(temp);
         }
+    }
+
+        // Boundry
+    public bool CheckIfTargetInBoundary()
+    {
+        if (hasBoundary)
+        {
+            if (boundaryCollider.bounds.Contains(target.transform.position))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true; // If enemy does not have a boundry
     }
 
         // Home Position
