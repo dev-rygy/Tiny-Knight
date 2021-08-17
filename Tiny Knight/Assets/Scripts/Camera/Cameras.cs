@@ -10,11 +10,11 @@ public class Cameras : MonoBehaviour
     public GameObject currentPlayerCam; // The current camera focused on the Player
 
     [Header("Camera Shake")]
-    public float time = 1f;
-    public float intensity = 2f;
+    public float time = 0.2f;
+    public float intensity = 5f;
 
     // private
-    private CinemachineVirtualCamera vCam;
+    private CinemachineVirtualCamera currentVCam;
     private float shakeTimer = 0f;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class Cameras : MonoBehaviour
             startingCam.SetActive(true); // if not set to active
         }
         currentPlayerCam = startingCam;
-        vCam = startingCam.GetComponent<CinemachineVirtualCamera>();
+        currentVCam = startingCam.GetComponent<CinemachineVirtualCamera>();
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class Cameras : MonoBehaviour
             {
                 // Time over!
                 CinemachineBasicMultiChannelPerlin cinemachineBasicPerlin =
-                    vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                    currentVCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
                 cinemachineBasicPerlin.m_AmplitudeGain = 0f;
             }
@@ -48,13 +48,13 @@ public class Cameras : MonoBehaviour
     {
         currentPlayerCam.SetActive(false); // Disable the current active cam
         currentPlayerCam = transitionCam; // switch to new cam
-        vCam = transitionCam.GetComponent<CinemachineVirtualCamera>();
+        currentVCam = transitionCam.GetComponent<CinemachineVirtualCamera>();
     }
 
     public void ShakeCamera()
     {
         CinemachineBasicMultiChannelPerlin cinemachineBasicPerlin =
-            vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>(); // set cinemachingBasicPerlin to the vCam's perlin
+            currentVCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>(); // set cinemachingBasicPerlin to the vCam's perlin
         cinemachineBasicPerlin.m_AmplitudeGain = intensity; // set the intensity of the screen shake
         shakeTimer = time;
     }
