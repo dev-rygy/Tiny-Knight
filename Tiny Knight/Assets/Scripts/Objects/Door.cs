@@ -36,6 +36,11 @@ public class Door : Interactable
         }
     }
 
+    private void ButtonDoor()
+    {
+
+    }
+
     private bool CheckForKey()
     {
         bool hasKey = false;
