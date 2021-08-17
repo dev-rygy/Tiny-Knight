@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxName: Player Right Basic
   canBreakObjects: 1
-  thrust: 1200
+  thrust: 1700
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
@@ -399,7 +399,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -447,7 +447,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028215945, y: -0.09875393}
+  m_Offset: {x: 0.0008714497, y: -0.0344007}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -458,7 +458,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7460615, y: 1.0576062}
+  m_Size: {x: 0.7499618, y: 0.92889977}
   m_EdgeRadius: 0
 --- !u!114 &7595285882783090394
 MonoBehaviour:
@@ -485,7 +485,7 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: a7f1a30ac40957e448b7a58a4c2cfb55, type: 2}
   receivedItemSprite: {fileID: 398701885}
   playerHealthSignal: {fileID: 11400000, guid: 3fc4ea390f950964396b185fba3444c5, type: 2}
-  cameraShakeSignal: {fileID: 0}
+  cameraShakeSignal: {fileID: 11400000, guid: 76641eb69694237438ae815a97a939a5, type: 2}
   debugModeEnabler: 0
 --- !u!114 &868304061
 MonoBehaviour:
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxName: Player Down Basic
   canBreakObjects: 1
-  thrust: 1200
+  thrust: 1700
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxName: Player Up Basic
   canBreakObjects: 1
-  thrust: 1200
+  thrust: 1700
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxName: Player Left Basic
   canBreakObjects: 1
-  thrust: 1200
+  thrust: 1700
   knocktime: 0.2
   recoverDelay: 0.3
   damage: 1
