@@ -24,5 +24,6 @@ public class FloatVariable : ScriptableObject, ISerializationCallbackReceiver
     public void SubtractRuntimeValue(float subtrahend) // Subtract from runtime value; a value that will reload
     {
         runtimeValue -= subtrahend;
+        Debug.Log(runtimeValue);
     }
 }
